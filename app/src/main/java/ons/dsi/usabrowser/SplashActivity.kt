@@ -12,6 +12,8 @@ import com.google.android.gms.ads.MobileAds
 import android.preference.PreferenceManager
 import java.util.*
 
+
+// from dev branch
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var mInterstitialAd: InterstitialAd
