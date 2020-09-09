@@ -37,11 +37,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.startapp.sdk.ads.banner.Banner
+import com.startapp.sdk.adsbase.StartAppSDK
 import kotlinx.android.synthetic.main.tab_drawer.*
 import java.util.*
 import javax.inject.Inject
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
+
 
 /**
  * A fragment that holds and manages the tabs and interaction with the tabs. It is reliant on the
@@ -60,7 +61,9 @@ class TabsFragment : Fragment(), View.OnClickListener, View.OnLongClickListener,
     private var tabsAdapter: LightningViewAdapter? = null
     private lateinit var uiController: UIController
 
-    lateinit var mAdView : AdView
+//    lateinit var mAdView : AdView
+    //facebook Ads
+    private  lateinit var banner : Banner
     @Inject internal lateinit var userPreferences: UserPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,15 +99,12 @@ class TabsFragment : Fragment(), View.OnClickListener, View.OnLongClickListener,
                 setOnLongClickListener(this@TabsFragment)
             }
         }
+        banner = view.findViewById(R.id.startAppBanner)
+        banner.loadAd()
 
-        mAdView = view.findViewById(R.id.adView)
-        if (!BuildConfig.FULL_VERSION) {
-            val adRequest = AdRequest.Builder().build()
-            mAdView.loadAd(adRequest)
-        } else {
-            mAdView.visibility = View.GONE
-        }
-
+//        mAdView = view.findViewById(R.id.adView)
+////        val adRequest = AdRequest.Builder().build()
+////        mAdView.loadAd(adRequest)
         return view
     }
 

@@ -42,6 +42,24 @@
             android:textAppearance="?android:attr/textAppearanceLarge"/>
     </LinearLayout>
 
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        xmlns:ads="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/adView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="2dp"-->
+<!--        ads:adSize="SMART_BANNER"-->
+
+<!--        ads:adUnitId="ca-app-pub-2322131950454521/4086266622">-->
+<!--    </com.google.android.gms.ads.AdView>-->
+    <com.startapp.sdk.ads.banner.Banner
+                android:id="@+id/startAppBanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/tabs_list"
         android:layout_width="match_parent"
@@ -51,15 +69,6 @@
         android:dividerHeight="0dp"
         android:overScrollMode="ifContentScrolls"/>
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-    </com.google.android.gms.ads.AdView>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bookmark_default_blue"
+    android:background="@color/white"
     tools:context="ons.dsi.usabrowser.SplashActivity">
 
     <ImageView
@@ -26,7 +26,7 @@
         android:layout_marginEnd="8dp"
         android:text="USA Browser"
         android:textSize="18sp"
-        android:textColor="@color/white"
+        android:textColor="@color/bookmark_default_orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
