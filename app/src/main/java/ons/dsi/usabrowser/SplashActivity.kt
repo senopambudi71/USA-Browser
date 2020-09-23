@@ -40,58 +40,6 @@ class SplashActivity : AppCompatActivity() {
             return
         }
         startAppAd.loadAd()
-
-//        mInterstitialAd = InterstitialAd(this)
-//        mInterstitialAd.adUnitId = "ca-app-pub-2322131950454521/5590919986"
-//        mInterstitialAd.loadAd(AdRequest.Builder().build())
-//
-//        mInterstitialAd.adListener = object : AdListener() {
-//            override fun onAdLoaded() {
-//                if(!adRespons)
-//                    return
-//
-//                handler.removeCallbacks(runable)
-//                handler.post(runable)
-//                Log.i("Ads", "onAdLoaded")
-//            }
-//
-//            override fun onAdFailedToLoad(errorCode: Int) {
-//                if(!adRespons)
-//                    return
-//
-//                handler.removeCallbacks(runable)
-//                handler.post(runable)
-//                Log.i("Ads", "onAdFailedToLoad")
-//            }
-//
-//            override fun onAdOpened() {
-//                Log.i("Ads", "onAdOpened")
-//            }
-//
-//            override fun onAdLeftApplication() {
-//                Log.i("Ads", "onAdLeftApplication")
-//            }
-//
-//            override fun onAdClosed() {
-//                Log.i("Ads", "onAdClosed")
-//                val i = Intent(this@SplashActivity, MainActivity::class.java)
-//                startActivity(i)
-//            }
-//        }
-//
-//        runable = Runnable {
-//            adRespons = false
-//            if (mInterstitialAd.isLoaded) {
-//                Log.i("Ads", "onAdSHOOOW")
-//                mInterstitialAd.show()
-//            } else {
-//                Log.d("Ads", "The interstitial wasn't loaded yet.")
-//                val i = Intent(this@SplashActivity, MainActivity::class.java)
-//                startActivity(i)
-//            }
-//        }
-
-        startDelay(4000)
     }
 
     fun startDelay(time: Long){
