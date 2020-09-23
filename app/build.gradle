@@ -163,7 +163,7 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion"
 
     //startApp
-    implementation 'com.startapp:inapp-sdk:4.6.+'
+//    implementation 'com.startapp:inapp-sdk:4.6.+'
 
     //faceBookAds
     implementation 'com.facebook.android:audience-network-sdk:5.+'
