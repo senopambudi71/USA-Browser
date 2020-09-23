@@ -7,20 +7,21 @@ import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.ads.InterstitialAd
+import androidx.fragment.app.FragmentActivity
+import com.facebook.ads.*
 import com.startapp.sdk.adsbase.StartAppAd
-import kotlinx.android.synthetic.main.activity_splash.*
 import java.util.*
 
 
 class SplashActivity : AppCompatActivity() {
 
-    private lateinit var mInterstitialAd: InterstitialAd
-    private val startAppAd = StartAppAd(this)
     private var adRespons = true
     private var runable: Runnable? = null
     var handler = Handler()
+    private val TAG: String = SplashActivity::class.java.getSimpleName()
+    private var interstitialAd: InterstitialAd? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         if (isNetworkAvailable(this)){
-            rotateloading.start()
+            facebookAdsLoad()
         }
 
 
@@ -43,6 +44,36 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         }
+    }
+
+    private fun facebookAdsLoad() {
+    //facebookAds
+        AudienceNetworkAds.initialize(this)
+        interstitialAd = InterstitialAd(this, "326362641897928_326384721895720")
+
+        val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
+            override fun onInterstitialDisplayed(ad: Ad?) {}
+            override fun onInterstitialDismissed(ad: Ad?) {}
+            override fun onError(ad: Ad?, adError: AdError?) {}
+            override fun onAdLoaded(ad: Ad?) {
+                // Interstitial ad is loaded and ready to be displayed
+                Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!")
+                // Show the ad
+                interstitialAd!!.show()
+            }
+
+            override fun onAdClicked(ad: Ad?) {
+                // Ad clicked callback
+                Log.d(TAG, "Interstitial ad clicked!")
+            }
+
+            override fun onLoggingImpression(ad: Ad?) {
+                // Ad impression logged callback
+                Log.d(TAG, "Interstitial ad impression logged!")
+            }
+        }
+        interstitialAd!!.loadAd()
+
     }
 
     fun isNetworkAvailable(context: Context): Boolean {
