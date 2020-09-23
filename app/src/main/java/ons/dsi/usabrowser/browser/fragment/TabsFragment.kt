@@ -37,8 +37,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.startapp.sdk.ads.banner.Banner
-import com.startapp.sdk.adsbase.StartAppSDK
 import kotlinx.android.synthetic.main.tab_drawer.*
 import java.util.*
 import javax.inject.Inject
@@ -63,7 +61,6 @@ class TabsFragment : Fragment(), View.OnClickListener, View.OnLongClickListener,
 
 //    lateinit var mAdView : AdView
     //facebook Ads
-    private  lateinit var banner : Banner
     @Inject internal lateinit var userPreferences: UserPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {

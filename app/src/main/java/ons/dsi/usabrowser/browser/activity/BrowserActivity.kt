@@ -84,7 +84,6 @@ import androidx.fragment.app.Fragment
 import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
-import com.startapp.sdk.adsbase.StartAppAd
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy

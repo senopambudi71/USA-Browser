@@ -11,7 +11,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.facebook.ads.*
-import com.startapp.sdk.adsbase.StartAppAd
 import java.util.*
 
 
@@ -50,7 +49,7 @@ class SplashActivity : AppCompatActivity() {
     //facebookAds
         AudienceNetworkAds.initialize(this)
         interstitialAd = InterstitialAd(this, "326362641897928_326384721895720")
-        AdSettings.addTestDevice("47ecce32-0419-4d62-9dea-c41c955638fa")
+        AdSettings.addTestDevice("f2c5d08f-7469-4c73-bad5-870c995f5afa")
 
         val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
