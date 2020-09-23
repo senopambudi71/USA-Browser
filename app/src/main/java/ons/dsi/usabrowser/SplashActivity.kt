@@ -50,10 +50,14 @@ class SplashActivity : AppCompatActivity() {
     //facebookAds
         AudienceNetworkAds.initialize(this)
         interstitialAd = InterstitialAd(this, "326362641897928_326384721895720")
+        AdSettings.addTestDevice("47ecce32-0419-4d62-9dea-c41c955638fa")
 
         val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
-            override fun onInterstitialDismissed(ad: Ad?) {}
+            override fun onInterstitialDismissed(ad: Ad?) {
+                finish()
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            }
             override fun onError(ad: Ad?, adError: AdError?) {}
             override fun onAdLoaded(ad: Ad?) {
                 // Interstitial ad is loaded and ready to be displayed
