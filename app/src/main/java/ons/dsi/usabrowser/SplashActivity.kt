@@ -28,9 +28,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        if (isNetworkAvailable(this)){
+//        if (isNetworkAvailable(this)){
             facebookAdsLoad()
-        }
+//        }
 
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)

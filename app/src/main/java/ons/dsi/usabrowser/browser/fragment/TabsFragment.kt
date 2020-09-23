@@ -99,8 +99,8 @@ class TabsFragment : Fragment(), View.OnClickListener, View.OnLongClickListener,
                 setOnLongClickListener(this@TabsFragment)
             }
         }
-        banner = view.findViewById(R.id.startAppBanner)
-        banner.loadAd()
+//        banner = view.findViewById(R.id.startAppBanner)
+//        banner.loadAd()
 
 //        mAdView = view.findViewById(R.id.adView)
 ////        val adRequest = AdRequest.Builder().build()

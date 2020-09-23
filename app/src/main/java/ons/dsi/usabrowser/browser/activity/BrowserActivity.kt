@@ -177,7 +177,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private var forwardMenuItem: MenuItem? = null
 
     //startApp
-    private lateinit var startAppAd : StartAppAd
+//    private lateinit var startAppAd : StartAppAd
 
     private val longPressBackRunnable = Runnable {
         showCloseDialog(tabsManager.positionOf(tabsManager.currentTab))
@@ -234,7 +234,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             RecentTabModel(),
             logger
         )
-        startAppAd = StartAppAd(this)
+       // startAppAd = StartAppAd(this)
 
         initialize(savedInstanceState)
     }
@@ -1199,7 +1199,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun onBackPressed() {
-        startAppAd.onBackPressed()
+//        startAppAd.onBackPressed()
         val currentTab = tabsManager.currentTab
         if (drawer_layout.isDrawerOpen(getTabDrawer())) {
             drawer_layout.closeDrawer(getTabDrawer())
