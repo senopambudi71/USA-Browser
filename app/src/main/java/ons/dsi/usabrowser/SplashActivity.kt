@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
+        AudienceNetworkAds.initialize(this)
 //        if (isNetworkAvailable(this)){
             facebookAdsLoad()
 //        }
@@ -43,14 +43,13 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         }
+        startDelay(4000)
     }
 
     private fun facebookAdsLoad() {
     //facebookAds
-        AudienceNetworkAds.initialize(this)
-        interstitialAd = InterstitialAd(this, "326362641897928_326384721895720")
-        AdSettings.addTestDevice("f2c5d08f-7469-4c73-bad5-870c995f5afa")
-
+        interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
+        AdSettings.addTestDevice("532db802-6b2b-4647-9265-e2e418a193ed")
         val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {

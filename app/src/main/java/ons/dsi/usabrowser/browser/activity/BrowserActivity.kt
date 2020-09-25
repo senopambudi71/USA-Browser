@@ -84,6 +84,8 @@ import androidx.fragment.app.Fragment
 import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
+import com.facebook.ads.AdSize
+import com.facebook.ads.AdView
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -109,6 +111,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private var fullscreenContainerView: FrameLayout? = null
     private var videoView: VideoView? = null
     private var customView: View? = null
+
+    //facebook Ads
+    private lateinit var adView: AdView
 
     // Adapter
     private var suggestionsAdapter: SuggestionsAdapter? = null
@@ -209,6 +214,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         super.onCreate(savedInstanceState)
         injector.inject(this)
         setContentView(R.layout.activity_main)
+        showBanner()
         ButterKnife.bind(this)
 
         val incognitoNotification = IncognitoNotification(this, notificationManager)
@@ -236,6 +242,17 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
        // startAppAd = StartAppAd(this)
 
         initialize(savedInstanceState)
+    }
+
+    private fun showBanner() {
+        //for testing
+        adView = AdView(this, "IMG_16_9_APP_INSTALL#326362641897928_343648120169380", AdSize.BANNER_HEIGHT_50)
+
+        //for playstore
+//        adView = AdView(this, getString(R.string.id_banner), AdSize.BANNER_HEIGHT_50)
+        val adContainer = findViewById(R.id.banner_container) as LinearLayout
+        adContainer.addView(adView)
+        adView.loadAd()
     }
 
     private fun initialize(savedInstanceState: Bundle?) {
