@@ -47,7 +47,7 @@ class SplashActivity : AppCompatActivity() {
     //facebookAds
         interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
         AdSettings.addTestDevice("532db802-6b2b-4647-9265-e2e418a193ed")
-        val interstitialAdListener: InterstitialAdListener = object : InterstitialAdListener {
+        interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
                 finish()
@@ -70,7 +70,7 @@ class SplashActivity : AppCompatActivity() {
                 // Ad impression logged callback
                 Log.d(TAG, "Interstitial ad impression logged!")
             }
-        }
+        })
         interstitialAd!!.loadAd()
 
     }
