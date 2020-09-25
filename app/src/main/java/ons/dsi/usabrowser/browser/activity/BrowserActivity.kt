@@ -814,7 +814,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
             R.id.action_copy -> {
                 if (currentUrl != null && !UrlUtils.isSpecialUrl(currentUrl)) {
-                    clipboardManager.primaryClip = ClipData.newPlainText("label", currentUrl)
+//                    clipboardManager.primaryClip = ClipData.newPlainText("label", currentUrl)
                     snackbar(R.string.message_link_copied)
                 }
                 return true
