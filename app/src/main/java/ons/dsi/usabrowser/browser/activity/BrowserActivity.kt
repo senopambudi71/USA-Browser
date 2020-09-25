@@ -246,10 +246,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private fun showBanner() {
         //for testing
-//        adView = AdView(this, "IMG_16_9_APP_INSTALL#326362641897928_343648120169380", AdSize.BANNER_HEIGHT_50)
+        adView = AdView(this, "IMG_16_9_APP_INSTALL#957023064793265_976868392808732", AdSize.BANNER_HEIGHT_50)
 
         //for playstore
-        adView = AdView(this, getString(R.string.id_banner), AdSize.BANNER_HEIGHT_50)
+//        adView = AdView(this, getString(R.string.id_banner), AdSize.BANNER_HEIGHT_50)
         val adContainer = findViewById(R.id.banner_container) as LinearLayout
         adContainer.addView(adView)
         adView.loadAd()
