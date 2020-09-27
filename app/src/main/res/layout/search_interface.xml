@@ -4,7 +4,7 @@
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/search_bar_height"
-                android:visibility="visible">
+                android:visibility="gone">
 
     <View
         android:layout_width="match_parent"
