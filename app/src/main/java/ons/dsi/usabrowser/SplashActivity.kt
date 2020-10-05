@@ -40,7 +40,7 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         }
-        startDelay(4000)
+        startDelay(2000)
     }
 
     private fun facebookAdsLoad() {
