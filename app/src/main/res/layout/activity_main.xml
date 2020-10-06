@@ -21,6 +21,11 @@
                 android:orientation="vertical">
 
                 <include layout="@layout/toolbar"/>
+
+                <include layout="@layout/browser_content"/>
+
+                <include layout="@layout/search_interface"/>
+
                 <LinearLayout
                     android:padding="2dp"
                     android:background="@color/bookmark_default_green"
@@ -29,9 +34,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:orientation="vertical" />
-                <include layout="@layout/browser_content"/>
-
-                <include layout="@layout/search_interface"/>
 
             </LinearLayout>
 
