@@ -22,6 +22,8 @@
 
                 <include layout="@layout/toolbar"/>
                 <LinearLayout
+                    android:padding="2dp"
+                    android:background="@color/bookmark_default_green"
                     android:id="@+id/banner_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
