@@ -43,7 +43,15 @@ class SplashActivity : AppCompatActivity() {
 //            startActivity(i)
 //            return
 //        }
-//        startDelay(1000)
+        showRunnable()
+        startDelay(1000)
+    }
+
+    private fun showRunnable() {
+        runable = Runnable {
+            val i = Intent(this@SplashActivity, MainActivity::class.java)
+            startActivity(i)
+        }
     }
 
     private fun facebookAdsLoad() {
