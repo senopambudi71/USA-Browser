@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.facebook.ads.*
@@ -27,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
-        facebookAdsLoad()
+
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
@@ -36,11 +37,12 @@ class SplashActivity : AppCompatActivity() {
         editor.apply()
 
         if (lastopen == Date().hours){
+            Toast.makeText(this, "in same day", Toast.LENGTH_SHORT).show()
             val i = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(i)
             return
         }
-        startDelay(4000)
+        startDelay(1000)
     }
 
     private fun facebookAdsLoad() {
