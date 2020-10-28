@@ -43,16 +43,22 @@ class SplashActivity : AppCompatActivity() {
 //            startActivity(i)
 //            return
 //        }
-        showRunnable()
+        runable = Runnable {
+            adRespons = false
+            if (interstitialAd!!.isAdLoaded){
+                Log.i("Ads", "Adds Show")
+                facebookAdsLoad()
+            }else{
+                Log.d("Ads", "Ads not show")
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
+            }
+
+        }
+
         startDelay(1000)
     }
 
-    private fun showRunnable() {
-        runable = Runnable {
-            val i = Intent(this@SplashActivity, MainActivity::class.java)
-            startActivity(i)
-        }
-    }
 
     private fun facebookAdsLoad() {
     //facebookAds
@@ -64,12 +70,27 @@ class SplashActivity : AppCompatActivity() {
                 finish()
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
-            override fun onError(ad: Ad?, adError: AdError?) {}
+            override fun onError(ad: Ad?, adError: AdError?) {
+                // Interstitial ad is loaded and ready to be displayed
+                Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!")
+                // Show the ad
+                if(!adRespons)
+                    return
+
+                handler.removeCallbacks(runable)
+                handler.post(runable)
+                Log.i("Ads", "onAdLoaded")
+            }
             override fun onAdLoaded(ad: Ad?) {
                 // Interstitial ad is loaded and ready to be displayed
                 Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!")
                 // Show the ad
-                interstitialAd!!.show()
+                if(!adRespons)
+                    return
+
+                handler.removeCallbacks(runable)
+                handler.post(runable)
+                Log.i("Ads", "onAdsError")
             }
 
             override fun onAdClicked(ad: Ad?) {
