@@ -37,12 +37,12 @@ class SplashActivity : AppCompatActivity() {
         editor.putInt("lastopen", Date().hours)
         editor.apply()
 
-//        if (lastopen == Date().hours){
-//            Toast.makeText(this, "in same day", Toast.LENGTH_SHORT).show()
-//            val i = Intent(this@SplashActivity, MainActivity::class.java)
-//            startActivity(i)
-//            return
-//        }
+        if (lastopen == Date().hours){
+            Toast.makeText(this, "in same day", Toast.LENGTH_SHORT).show()
+            val i = Intent(this@SplashActivity, MainActivity::class.java)
+            startActivity(i)
+            return
+        }
 
         startDelay(1000)
     }
