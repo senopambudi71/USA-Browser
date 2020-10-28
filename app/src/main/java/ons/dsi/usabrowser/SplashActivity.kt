@@ -43,18 +43,6 @@ class SplashActivity : AppCompatActivity() {
 //            startActivity(i)
 //            return
 //        }
-        runable = Runnable {
-            adRespons = false
-            if (interstitialAd!!.isAdLoaded){
-                Log.i("Ads", "Adds Show")
-                facebookAdsLoad()
-            }else{
-                Log.d("Ads", "Ads not show")
-                val i = Intent(this@SplashActivity, MainActivity::class.java)
-                startActivity(i)
-            }
-
-        }
 
         startDelay(1000)
     }
@@ -72,14 +60,14 @@ class SplashActivity : AppCompatActivity() {
             }
             override fun onError(ad: Ad?, adError: AdError?) {
                 // Interstitial ad is loaded and ready to be displayed
-                Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!")
+                Log.e(TAG, "Interstitial ad is error to display")
                 // Show the ad
                 if(!adRespons)
                     return
 
                 handler.removeCallbacks(runable)
                 handler.post(runable)
-                Log.i("Ads", "onAdLoaded")
+                Log.i("Ads", "onAdError")
             }
             override fun onAdLoaded(ad: Ad?) {
                 // Interstitial ad is loaded and ready to be displayed
@@ -90,7 +78,7 @@ class SplashActivity : AppCompatActivity() {
 
                 handler.removeCallbacks(runable)
                 handler.post(runable)
-                Log.i("Ads", "onAdsError")
+                Log.i("Ads", "onAdsLoad")
             }
 
             override fun onAdClicked(ad: Ad?) {
@@ -104,6 +92,19 @@ class SplashActivity : AppCompatActivity() {
             }
         })
         interstitialAd!!.loadAd()
+
+        runable = Runnable {
+            adRespons = false
+            if (interstitialAd!!.isAdLoaded){
+                Log.i("Ads", "Adds Show")
+                interstitialAd!!.show()
+            }else{
+                Log.d("Ads", "Ads not show")
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
+            }
+
+        }
 
     }
 
