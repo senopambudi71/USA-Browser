@@ -27,8 +27,7 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        AudienceNetworkAds.initialize(this)
-        facebookAdsLoad()
+
 
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
@@ -43,6 +42,8 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         }
+        AudienceNetworkAds.initialize(this)
+        facebookAdsLoad()
 
         startDelay(4000)
     }
