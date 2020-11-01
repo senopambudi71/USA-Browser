@@ -45,6 +45,10 @@ class SplashActivity : AppCompatActivity() {
         facebookAdsLoad()
 
 //        startDelay(4000)
+
+        handler.postDelayed(Runnable {
+            Toast.makeText(this, "its work !!", Toast.LENGTH_SHORT).show()
+        }, 4000.toLong())
     }
 
 
@@ -105,20 +109,20 @@ class SplashActivity : AppCompatActivity() {
 //            }
 //
 //        }
-        handler.postDelayed(Runnable {
-            // Check if interstitialAd has been loaded successfully
-            if (interstitialAd == null || !interstitialAd!!.isAdLoaded) {
-                Toast.makeText(this, "ads Loads", Toast.LENGTH_SHORT).show()
-                return@Runnable
-            }
-            // Check if ad is already expired or invalidated, and do not show ad if that is the case. You will not get paid to show an invalidated ad.
-            if (interstitialAd!!.isAdInvalidated) {
-                Toast.makeText(this, "ads Expired", Toast.LENGTH_SHORT).show()
-                return@Runnable
-            }
-            // Show the ad
-            interstitialAd!!.show()
-        }, 4000.toLong())
+//        handler.postDelayed(Runnable {
+//            // Check if interstitialAd has been loaded successfully
+//            if (interstitialAd == null || !interstitialAd!!.isAdLoaded) {
+//                Toast.makeText(this, "ads Loads", Toast.LENGTH_SHORT).show()
+//                return@Runnable
+//            }
+//            // Check if ad is already expired or invalidated, and do not show ad if that is the case. You will not get paid to show an invalidated ad.
+//            if (interstitialAd!!.isAdInvalidated) {
+//                Toast.makeText(this, "ads Expired", Toast.LENGTH_SHORT).show()
+//                return@Runnable
+//            }
+//            // Show the ad
+//            interstitialAd!!.show()
+//        }, 4000.toLong())
 
     }
 
