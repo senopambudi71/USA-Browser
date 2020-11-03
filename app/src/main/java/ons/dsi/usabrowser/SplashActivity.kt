@@ -27,6 +27,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        AudienceNetworkAds.initialize(this)
+        facebookAdsLoad()
+
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
         val editor = prefs.edit()
@@ -39,8 +42,6 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         }
-        AudienceNetworkAds.initialize(this)
-        facebookAdsLoad()
 
     }
 
