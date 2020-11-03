@@ -49,7 +49,7 @@ class SplashActivity : AppCompatActivity() {
     private fun facebookAdsLoad() {
     //facebookAds
         interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
-        AdSettings.addTestDevice("93021d43-a102-4371-9785-3c5f5bf14ad3")
+        AdSettings.addTestDevice("bc12fe3f-8816-407d-a805-198cc34c705f")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
