@@ -154,10 +154,10 @@ class SplashActivity : AppCompatActivity() {
         super.onPause()
         finish()
     }
-    override fun onDestroy() {
-        if (interstitialAd != null) {
-            interstitialAd!!.destroy()
-        }
-        super.onDestroy()
-    }
+//    override fun onDestroy() {
+//        if (interstitialAd != null) {
+//            interstitialAd!!.destroy()
+//        }
+//        super.onDestroy()
+//    }
 }
