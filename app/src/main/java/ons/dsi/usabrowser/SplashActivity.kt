@@ -63,7 +63,7 @@ class SplashActivity : AppCompatActivity() {
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
-                finish()
+//                finish()
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
             override fun onError(ad: Ad?, adError: AdError?) {
