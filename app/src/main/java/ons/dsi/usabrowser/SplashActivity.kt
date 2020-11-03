@@ -113,7 +113,7 @@ class SplashActivity : AppCompatActivity() {
 //                startActivity(i)
             }
 //
-//        }
+        }
 //        handler.postDelayed(Runnable {
 //            // Check if interstitialAd has been loaded successfully
 //            if (interstitialAd == null || !interstitialAd!!.isAdLoaded) {
