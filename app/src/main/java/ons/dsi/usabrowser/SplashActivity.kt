@@ -103,8 +103,8 @@ class SplashActivity : AppCompatActivity() {
                 val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
             }
-//
         }
+        startDelay(4000)
     }
 
     fun isNetworkAvailable(context: Context): Boolean {
