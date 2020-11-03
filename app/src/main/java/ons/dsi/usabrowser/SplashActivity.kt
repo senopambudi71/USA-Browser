@@ -109,8 +109,8 @@ class SplashActivity : AppCompatActivity() {
                 interstitialAd!!.show()
             }else{
                 Log.d("Ads", "Ads not show")
-//                val i = Intent(this@SplashActivity, MainActivity::class.java)
-//                startActivity(i)
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
             }
 //
         }
@@ -154,10 +154,5 @@ class SplashActivity : AppCompatActivity() {
         super.onPause()
         finish()
     }
-//    override fun onDestroy() {
-//        if (interstitialAd != null) {
-//            interstitialAd!!.destroy()
-//        }
-//        super.onDestroy()
-//    }
+
 }
