@@ -36,12 +36,12 @@ class SplashActivity : AppCompatActivity() {
         editor.putInt("lastopen", Date().hours)
         editor.apply()
 
-        if (lastopen == Date().hours){
-            Log.i(TAG, "apps Load again")
-            val i = Intent(this@SplashActivity, MainActivity::class.java)
-            startActivity(i)
-            return
-        }
+//        if (lastopen == Date().hours){
+//            Log.i(TAG, "apps Load again")
+//            val i = Intent(this@SplashActivity, MainActivity::class.java)
+//            startActivity(i)
+//            return
+//        }
 
     }
 
