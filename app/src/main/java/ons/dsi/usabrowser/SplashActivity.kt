@@ -47,7 +47,11 @@ class SplashActivity : AppCompatActivity() {
 //        startDelay(4000)
 
         handler.postDelayed(Runnable {
-            Toast.makeText(this, "its work !!", Toast.LENGTH_SHORT).show()
+            if(interstitialAd?.isAdLoaded!!){
+                Toast.makeText(this, "Ads Load", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "its work !!", Toast.LENGTH_SHORT).show()
+            }
         }, 4000.toLong())
     }
 
@@ -82,6 +86,7 @@ class SplashActivity : AppCompatActivity() {
 //
 //                handler.removeCallbacks(runable)
 //                handler.post(runable)
+                interstitialAd!!.show()
                 Log.i("Ads", "onAdsLoad")
             }
 
