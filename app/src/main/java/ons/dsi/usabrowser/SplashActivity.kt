@@ -27,20 +27,18 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-
-
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
         val editor = prefs.edit()
         editor.putInt("lastopen", Date().hours)
         editor.apply()
 
-//        if (lastopen == Date().hours){
-////            Toast.makeText(this, "in same day", Toast.LENGTH_SHORT).show()
-//            val i = Intent(this@SplashActivity, MainActivity::class.java)
-//            startActivity(i)
-//            return
-//        }
+        if (lastopen == Date().hours){
+            Log.i(TAG, "apps Load again")
+            val i = Intent(this@SplashActivity, MainActivity::class.java)
+            startActivity(i)
+            return
+        }
         AudienceNetworkAds.initialize(this)
         facebookAdsLoad()
 
