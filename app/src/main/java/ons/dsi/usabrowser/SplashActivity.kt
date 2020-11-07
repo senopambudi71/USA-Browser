@@ -67,7 +67,7 @@ class SplashActivity : AppCompatActivity() {
 //
 //                handler.removeCallbacks(runable)
 //                handler.post(runable)
-                Log.i("Ads", "onAdError")
+                Log.i("Ads", "onAdError $adError")
             }
             override fun onAdLoaded(ad: Ad?) {
                 // Interstitial ad is loaded and ready to be displayed
