@@ -105,7 +105,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(i)
             }
         }
-        startDelay(4000)
+        startDelay(3000)
     }
 
     fun isNetworkAvailable(context: Context): Boolean {
