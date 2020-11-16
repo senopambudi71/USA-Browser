@@ -35,22 +35,15 @@ class SplashActivity : AppCompatActivity() {
         editor.putInt("lastopen", Date().hours)
         editor.apply()
 
-        if (lastopen == Date().hours){
+        if (lastopen == Date().hours) {
             val i = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(i)
             return
+        } else {
+//            facebookAdsLoad()
         }
-//        else{
-////            facebookAdsLoad()
-//        }
-
-        runable = Runnable {
-                val i = Intent(this@SplashActivity, MainActivity::class.java)
-                startActivity(i)
-        }
-
-        startDelay(4000)
     }
+
 
     private fun facebookAdsLoad() {
     //facebookAds
