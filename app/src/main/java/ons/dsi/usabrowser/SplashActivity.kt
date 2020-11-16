@@ -41,9 +41,17 @@ class SplashActivity : AppCompatActivity() {
             val i = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(i)
             return
-        }else {
-            facebookAdsLoad()
         }
+//        else {
+//            facebookAdsLoad()
+//        }
+
+        runable = Runnable {
+            adRespons = false
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
+        }
+        startDelay(3000)
 
     }
 
