@@ -17,29 +17,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:fontFamily="sans-serif-smallcaps"-->
+<!--        android:text="@string/app_name"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView2" />-->
 
-    <com.victor.loading.rotate.RotateLoading
-        android:id="@+id/rotateloading"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_above="@+id/textView"
-        app:loading_color="@android:color/holo_red_dark"
-        android:layout_centerHorizontal="true"
-        app:loading_speed="11"
-        app:loading_width="5dp"
-        tools:ignore="MissingConstraints" />
+<!--    <com.victor.loading.rotate.RotateLoading-->
+<!--        android:id="@+id/rotateloading"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:layout_above="@+id/textView"-->
+<!--        app:loading_color="@android:color/holo_red_dark"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        app:loading_speed="11"-->
+<!--        app:loading_width="5dp"-->
+<!--        tools:ignore="MissingConstraints" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
