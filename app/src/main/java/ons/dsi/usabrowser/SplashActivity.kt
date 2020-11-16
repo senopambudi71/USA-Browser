@@ -39,9 +39,17 @@ class SplashActivity : AppCompatActivity() {
             val i = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(i)
             return
-        }else{
-            facebookAdsLoad()
         }
+//        else{
+////            facebookAdsLoad()
+//        }
+
+        runable = Runnable {
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
+        }
+
+        startDelay(4000)
     }
 
     private fun facebookAdsLoad() {
@@ -94,6 +102,7 @@ class SplashActivity : AppCompatActivity() {
             adRespons = false
             if (interstitialAd!!.isAdLoaded){
                 Log.i("Ads", "Adds Show")
+//                opened this comment if you want show this ads
                 interstitialAd!!.show()
             }else{
                 Log.d("Ads", "Ads not show")
