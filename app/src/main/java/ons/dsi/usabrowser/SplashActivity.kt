@@ -11,6 +11,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.facebook.ads.*
+import com.startapp.sdk.ads.splash.SplashConfig
+import com.startapp.sdk.adsbase.StartAppAd
 import java.util.*
 
 
@@ -25,6 +27,16 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // NOTE always use test ads during development and testing
+//        StartAppSDK.setTestAdsEnabled(BuildConfig.DEBUG);
+
+        //for customizing splash on StartApp
+        StartAppAd.showSplash(this, savedInstanceState, SplashConfig()
+                .setTheme(SplashConfig.Theme.USER_DEFINED)
+                .setCustomScreen(R.layout.activity_splash)
+        )
+
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
 
@@ -40,10 +52,19 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         } else {
+            showStartApp()
 //            facebookAdsLoad()
         }
     }
 
+    private fun showStartApp() {
+        runable = Runnable {
+            val i = Intent(this@SplashActivity, MainActivity::class.java)
+            startActivity(i)
+            StartAppAd.showAd(this)
+        }
+        startDelay(4000)
+    }
 
     private fun facebookAdsLoad() {
     //facebookAds
@@ -129,6 +150,13 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        finish()
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        val i = Intent(this@SplashActivity, MainActivity::class.java)
+        startActivity(i)
         finish()
     }
 }
