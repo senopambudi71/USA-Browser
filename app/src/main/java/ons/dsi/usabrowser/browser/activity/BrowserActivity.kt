@@ -86,6 +86,7 @@ import butterknife.ButterKnife
 import com.anthonycr.grant.PermissionsManager
 import com.facebook.ads.AdSize
 import com.facebook.ads.AdView
+import com.startapp.sdk.ads.banner.Banner
 import io.reactivex.Completable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.subscribeBy
@@ -182,6 +183,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     //startApp
 //    private lateinit var startAppAd : StartAppAd
+    lateinit var banner : Banner
 
     private val longPressBackRunnable = Runnable {
         showCloseDialog(tabsManager.positionOf(tabsManager.currentTab))
@@ -242,6 +244,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
        // startAppAd = StartAppAd(this)
 
         initialize(savedInstanceState)
+    }
+
+    private fun showBannerStartApp() {
+        banner = findViewById(R.id.startAppBanner)
+        banner.loadAd()
     }
 
     private fun showBanner() {
