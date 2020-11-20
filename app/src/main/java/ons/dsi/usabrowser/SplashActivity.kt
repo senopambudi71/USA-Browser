@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.facebook.ads.*
+import org.jsoup.Jsoup
 import java.util.*
 
 
@@ -43,8 +44,11 @@ class SplashActivity : AppCompatActivity() {
             facebookAdsLoad()
         }
 
+        //GetLastVersion PlayStore
+        Log.i("LastVersionPS : ", Jsoup.connect("https://play.google.com/store/apps/details?id=lite.open.browser5g").toString())
 
     }
+
 
     private fun facebookAdsLoad() {
     //facebookAds
