@@ -35,13 +35,13 @@ class SplashActivity : AppCompatActivity() {
         editor.putInt("lastopen", Date().hours)
         editor.apply()
 
-//        if (lastopen == Date().hours){
-//            val i = Intent(this@SplashActivity, MainActivity::class.java)
-//            startActivity(i)
-//            return
-//        } else{
+        if (lastopen == Date().hours){
+            val i = Intent(this@SplashActivity, MainActivity::class.java)
+            startActivity(i)
+            return
+        } else{
             facebookAdsLoad()
-//        }
+        }
 
 
     }
@@ -49,7 +49,7 @@ class SplashActivity : AppCompatActivity() {
     private fun facebookAdsLoad() {
     //facebookAds
         interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
-        AdSettings.addTestDevice("0ac682ab-6be1-4f86-a2b3-43733630205f")
+//        AdSettings.addTestDevice("0ac682ab-6be1-4f86-a2b3-43733630205f")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
