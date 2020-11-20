@@ -45,7 +45,15 @@ class SplashActivity : AppCompatActivity() {
         }
 
         //GetLastVersion PlayStore
-        Log.i("LastVersionPS : ", Jsoup.connect("https://play.google.com/store/apps/details?id=lite.open.browser5g").toString())
+        Log.i("LastVersionPS : ", Jsoup.connect("https://play.google.com/store/apps/details?id=lite.open.browser5g")
+                .timeout(30000)
+                .get()
+                .select(("div.hAyfc:nth-child(4)>"+
+                        "span:nth-child(2) > div:nth-child(1)"+
+                        "> span:nth-child(1)"))
+                .first()
+                .ownText()
+                .toString())
 
     }
 
