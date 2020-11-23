@@ -42,16 +42,10 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         }
-//        else {
-//            facebookAdsLoad()
-//        }
-
-        runable = Runnable {
-            adRespons = false
-                val i = Intent(this@SplashActivity, MainActivity::class.java)
-                startActivity(i)
+        else {
+            facebookAdsLoad()
         }
-        startDelay(3000)
+
 
     }
 
@@ -59,7 +53,7 @@ class SplashActivity : AppCompatActivity() {
     private fun facebookAdsLoad() {
     //facebookAds
         interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
-//        AdSettings.addTestDevice("bc12fe3f-8816-407d-a805-198cc34c705f")
+        AdSettings.addTestDevice("bc12fe3f-8816-407d-a805-198cc34c705f")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
