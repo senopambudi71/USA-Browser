@@ -45,4 +45,6 @@
     <color name="ssl_secured">#4CAF50</color>
     <color name="ssl_unsecured">#F44336</color>
 
+    <color name="orange_x_browser">#F38534</color>
+
 </resources>
