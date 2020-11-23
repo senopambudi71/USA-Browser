@@ -37,38 +37,14 @@ class SplashActivity : AppCompatActivity() {
         editor.apply()
 
         if (lastopen == Date().hours){
-            //GetLastVersion PlayStore
-            Log.i("LastVersionPS : ", Jsoup.connect("https://play.google.com/store/apps/details?id=lite.open.browser5g")
-                    .timeout(30000)
-                    .get()
-                    .select(("div.hAyfc:nth-child(4)>"+
-                            "span:nth-child(2) > div:nth-child(1)"+
-                            "> span:nth-child(1)"))
-                    .first()
-                    .ownText()
-                    .toString())
-
             val i = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(i)
             return
         } else{
-            //GetLastVersion PlayStore
-            Log.i("LastVersionPS : ", Jsoup.connect("https://play.google.com/store/apps/details?id=lite.open.browser5g")
-                    .timeout(30000)
-                    .get()
-                    .select(("div.hAyfc:nth-child(4)>"+
-                            "span:nth-child(2) > div:nth-child(1)"+
-                            "> span:nth-child(1)"))
-                    .first()
-                    .ownText()
-                    .toString())
             facebookAdsLoad()
         }
 
-
-
     }
-
 
     private fun facebookAdsLoad() {
     //facebookAds

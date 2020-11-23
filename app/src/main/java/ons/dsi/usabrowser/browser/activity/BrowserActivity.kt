@@ -214,7 +214,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         super.onCreate(savedInstanceState)
         injector.inject(this)
         setContentView(R.layout.activity_main)
-//        showBanner()
+        showBanner()
         ButterKnife.bind(this)
 
         val incognitoNotification = IncognitoNotification(this, notificationManager)
