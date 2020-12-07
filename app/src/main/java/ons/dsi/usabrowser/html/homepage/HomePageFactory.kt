@@ -29,16 +29,16 @@ class HomePageFactory @Inject constructor(
             parse(homePageReader.provideHtml()) andBuild {
                 title { title }
                 charset { UTF8 }
-                body {
-                    id("image_url") { attr("src", iconUrl) }
-                    tag("script") {
-                        html(
-                            html()
-                                .replace("\${BASE_URL}", queryUrl)
-                                .replace("&", "\\u0026")
-                        )
-                    }
-                }
+//                body {
+//                    id("image_url") { attr("src", iconUrl) }
+//                    tag("script") {
+//                        html(
+//                            html()
+//                                .replace("\${BASE_URL}", queryUrl)
+//                                .replace("&", "\\u0026")
+//                        )
+//                    }
+//                }
             }
         }
         .map { content -> Pair(createHomePage(), content) }
