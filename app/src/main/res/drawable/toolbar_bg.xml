@@ -5,9 +5,9 @@
         <shape
             android:dither="true"
             android:shape="rectangle" >
-            <corners android:radius="14dp" />
+            <corners android:radius="17dp" />
 
-            <solid android:color="@color/browser_actions_bg_grey" />
+            <solid android:color="@color/white" />
         </shape>
     </item>
 
