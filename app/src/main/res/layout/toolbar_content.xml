@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
+    <include layout="@layout/search" />
+
     <FrameLayout
         android:id="@+id/arrow_button"
         android:layout_width="?attr/actionBarSize"
@@ -19,6 +21,5 @@
             android:layout_height="wrap_content" />
     </FrameLayout>
 
-    <include layout="@layout/search" />
 
 </LinearLayout>
