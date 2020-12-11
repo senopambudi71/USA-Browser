@@ -799,6 +799,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 presenter?.newTab(homePageInitializer, true)
                 return true
             }
+            R.id.action_downloads_tab -> {
+                openDownloads()
+                return true
+            }
             R.id.action_incognito -> {
                 startActivity(IncognitoActivity.createIntent(this))
                 overridePendingTransition(R.anim.slide_up_in, R.anim.fade_out_scale)

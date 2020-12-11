@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/dividerColor"
@@ -76,7 +77,7 @@
         android:background="?attr/dividerColor"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <FrameLayout
             android:id="@+id/action_back"
@@ -145,6 +146,24 @@
                 android:contentDescription="@string/action_new_tab"
                 app:srcCompat="@drawable/ic_action_plus"/>
         </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/action_downloads_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?attr/actionBarItemBackground"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/ic_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/action_downloads"
+                app:srcCompat="@drawable/ic_download"/>
+        </FrameLayout>
+
     </LinearLayout>
 
 </LinearLayout>
