@@ -211,5 +211,6 @@ interface UIController {
      */
     fun handleNewTab(newTabType: LightningDialogBuilder.NewTab, url: String)
 
+    fun onButtonDownloadPressed()
 
 }

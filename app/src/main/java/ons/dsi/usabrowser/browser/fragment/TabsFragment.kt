@@ -88,6 +88,8 @@ class TabsFragment : Fragment(), View.OnClickListener, View.OnLongClickListener,
             setupFrameLayoutButton(view, R.id.action_back, R.id.icon_back)
             setupFrameLayoutButton(view, R.id.action_forward, R.id.icon_forward)
             setupFrameLayoutButton(view, R.id.action_home, R.id.icon_home)
+            setupFrameLayoutButton(view, R.id.action_downloads_tab, R.id.ic_download)
+
         } else {
             view = inflater.inflate(R.layout.tab_strip, container, false)
             view.findViewById<ImageView>(R.id.new_tab_button).apply {
@@ -178,6 +180,7 @@ class TabsFragment : Fragment(), View.OnClickListener, View.OnLongClickListener,
         R.id.action_back -> uiController.onBackButtonPressed()
         R.id.action_forward -> uiController.onForwardButtonPressed()
         R.id.action_home -> uiController.onHomeButtonPressed()
+        R.id.action_downloads_tab -> uiController.onButtonDownloadPressed()
         else -> {
         }
     }

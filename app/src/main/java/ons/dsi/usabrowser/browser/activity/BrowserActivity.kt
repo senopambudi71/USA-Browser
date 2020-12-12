@@ -61,6 +61,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.style.CharacterStyle
 import android.text.style.ParagraphStyle
+import android.util.Log
 import android.view.*
 import android.view.View.*
 import android.view.ViewGroup.LayoutParams
@@ -797,10 +798,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
             R.id.action_new_tab -> {
                 presenter?.newTab(homePageInitializer, true)
-                return true
-            }
-            R.id.action_downloads_tab -> {
-                openDownloads()
                 return true
             }
             R.id.action_incognito -> {
@@ -1769,6 +1766,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     override fun onHomeButtonPressed() {
         tabsManager.currentTab?.loadHomePage()
+        closeDrawers(null)
+    }
+
+    override fun onButtonDownloadPressed() {
+        tabsManager.currentTab?.loadDownloadsPage()
         closeDrawers(null)
     }
 
