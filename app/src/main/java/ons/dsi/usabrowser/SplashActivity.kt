@@ -32,10 +32,10 @@ class SplashActivity : AppCompatActivity() {
 //        StartAppSDK.setTestAdsEnabled(BuildConfig.DEBUG);
 
         //for customizing splash on StartApp
-        StartAppAd.showSplash(this, savedInstanceState, SplashConfig()
-                .setTheme(SplashConfig.Theme.USER_DEFINED)
-                .setCustomScreen(R.layout.activity_splash)
-        )
+//        StartAppAd.showSplash(this, savedInstanceState, SplashConfig()
+//                .setTheme(SplashConfig.Theme.USER_DEFINED)
+//                .setCustomScreen(R.layout.activity_splash)
+//        )
 
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
@@ -52,7 +52,7 @@ class SplashActivity : AppCompatActivity() {
             startActivity(i)
             return
         } else {
-            showStartApp()
+//            showStartApp()
 //            facebookAdsLoad()
         }
     }
