@@ -53,7 +53,7 @@ class SplashActivity : AppCompatActivity() {
             return
         } else {
 //            showStartApp()
-//            facebookAdsLoad()
+            facebookAdsLoad()
         }
     }
 

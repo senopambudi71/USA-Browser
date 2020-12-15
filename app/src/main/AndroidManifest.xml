@@ -67,12 +67,12 @@
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
-        <meta-data
-            android:name="com.startapp.sdk.APPLICATION_ID"
-            android:value="208835501" />
-        <meta-data
-            android:name="com.startapp.sdk.RETURN_ADS_ENABLED"
-            android:value="false" />
+<!--        <meta-data-->
+<!--            android:name="com.startapp.sdk.APPLICATION_ID"-->
+<!--            android:value="208835501" />-->
+<!--        <meta-data-->
+<!--            android:name="com.startapp.sdk.RETURN_ADS_ENABLED"-->
+<!--            android:value="false" />-->
 
         <activity
             android:name="ons.dsi.usabrowser.MainActivity"
