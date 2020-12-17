@@ -39,6 +39,7 @@ class SplashActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
+        cekUpdateApp()
 
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
@@ -55,6 +56,10 @@ class SplashActivity : AppCompatActivity() {
 //            showStartApp()
             facebookAdsLoad()
         }
+    }
+
+    private fun cekUpdateApp() {
+//        val queue = Volley.
     }
 
     private fun showStartApp() {
