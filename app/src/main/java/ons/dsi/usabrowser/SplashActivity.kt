@@ -1,18 +1,26 @@
 package ons.dsi.usabrowser
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.facebook.ads.*
 import com.startapp.sdk.ads.splash.SplashConfig
 import com.startapp.sdk.adsbase.StartAppAd
+import org.json.JSONObject
 import java.util.*
 
 
@@ -59,7 +67,29 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun cekUpdateApp() {
-//        val queue = Volley.
+        val queue = Volley.newRequestQueue(this)
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/obrowser.json"
+
+        val stringReq = StringRequest(Request.Method.GET, url,
+            Response.Listener<String> {response ->
+                val resp= response.toString()
+                val jsonObject= JSONObject(resp)
+                val version = jsonObject.getInt("version_code")
+
+                val manager = this.packageManager
+                val info = manager.getPackageInfo(this.packageName, PackageManager.GET_ACTIVITIES)
+                val infovCode= info.versionCode
+
+                if(infovCode < version){
+                    Log.i("Respons", "Latest version O Browser is available on Google play store. Please Updated soon !!")
+                }else{
+                    Log.i("Respons", "you have to update App. Thanks")
+                }
+
+
+            },
+            Response.ErrorListener {Log.e("ResponsError", "No Data")})
+        queue.add(stringReq)
     }
 
     private fun showStartApp() {

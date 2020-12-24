@@ -89,6 +89,8 @@
     <string name="action_homepage">Default</string>
     <string name="action_back">Back</string>
     <string name="action_find">Find in page</string>
+    <string name="dialog_title">App Update</string>
+    <string name="dialog_message">New version of this app is available on Play Store. Lets Update Now !</string>
     <string name="download_pending">Starting download\u2026</string>
     <string name="cannot_download">Can only download \"http\" or \"https\" URLs.</string>
     <string name="problem_download">Invalid URL encountered, cannot download</string>
