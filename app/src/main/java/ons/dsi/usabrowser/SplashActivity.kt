@@ -6,19 +6,18 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.facebook.ads.*
-import com.startapp.sdk.ads.splash.SplashConfig
 import com.startapp.sdk.adsbase.StartAppAd
 import org.json.JSONObject
 import java.util.*
@@ -57,11 +56,8 @@ class SplashActivity : AppCompatActivity() {
         editor.apply()
 
         if (lastopen == Date().hours) {
-            val i = Intent(this@SplashActivity, MainActivity::class.java)
-            startActivity(i)
-            return
+           cekUpdateApp()
         } else {
-//            showStartApp()
             facebookAdsLoad()
         }
     }
@@ -82,6 +78,22 @@ class SplashActivity : AppCompatActivity() {
 
                 if(infovCode < version){
                     Log.i("Respons", "Latest version O Browser is available on Google play store. Please Updated soon !!")
+
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("News Version")
+                    builder.setMessage("New Version is available. Lets Update Now")
+
+                    builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                        val intent = Intent(Intent.ACTION_VIEW)
+                        intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.ybrowser.master")
+                        startActivity(intent)
+                    }
+
+                    builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                        showSplash()
+                    }
+
+                    builder.show()
                 }else{
                     Log.i("Respons", "you have to update App. Thanks")
                 }
@@ -90,6 +102,14 @@ class SplashActivity : AppCompatActivity() {
             },
             Response.ErrorListener {Log.e("ResponsError", "No Data")})
         queue.add(stringReq)
+    }
+
+    private fun showSplash(){
+        runable = Runnable {
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
+        }
+        startDelay(4000)
     }
 
     private fun showStartApp() {
