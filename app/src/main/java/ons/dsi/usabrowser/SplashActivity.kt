@@ -46,7 +46,7 @@ class SplashActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
-        cekUpdateApp()
+//        cekUpdateApp()
 
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
@@ -56,9 +56,12 @@ class SplashActivity : AppCompatActivity() {
         editor.apply()
 
         if (lastopen == Date().hours) {
-           cekUpdateApp()
-        } else {
-            facebookAdsLoad()
+//           cekUpdateApp()
+            showSplash()
+        }
+        else {
+            cekUpdateApp()
+//            facebookAdsLoad()
         }
     }
 
@@ -77,11 +80,11 @@ class SplashActivity : AppCompatActivity() {
                 val infovCode= info.versionCode
 
                 if(infovCode < version){
-                    Log.i("Respons", "Latest version O Browser is available on Google play store. Please Updated soon !!")
+                    Log.i("Respons", "New version O Browser is available on Google play store. Please Updated soon !!")
 
                     val builder = AlertDialog.Builder(this)
-                    builder.setTitle("News Version")
-                    builder.setMessage("New Version is available. Lets Update Now")
+                    builder.setTitle("Information Update")
+                    builder.setMessage("New version App is available on Google play store. Please Update Now !")
 
                     builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                         val intent = Intent(Intent.ACTION_VIEW)
@@ -90,17 +93,22 @@ class SplashActivity : AppCompatActivity() {
                     }
 
                     builder.setNegativeButton(android.R.string.no) { dialog, which ->
-                        showSplash()
+                        Log.i("Respons", "cancel update")
+                        facebookAdsLoad()
                     }
 
                     builder.show()
                 }else{
-                    Log.i("Respons", "you have to update App. Thanks")
+                    Log.i("Respons", "nothing updated in play store")
+                    showSplash()
                 }
 
 
             },
-            Response.ErrorListener {Log.e("ResponsError", "No Data")})
+            Response.ErrorListener {
+                Log.e("ResponsError", "No Data")
+                showSplash()
+            })
         queue.add(stringReq)
     }
 
@@ -109,7 +117,7 @@ class SplashActivity : AppCompatActivity() {
                 val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
         }
-        startDelay(4000)
+        startDelay(3000)
     }
 
     private fun showStartApp() {
