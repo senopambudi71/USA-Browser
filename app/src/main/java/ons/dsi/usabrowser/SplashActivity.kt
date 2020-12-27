@@ -45,8 +45,6 @@ class SplashActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
-//        cekUpdateApp()
-
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
@@ -54,14 +52,14 @@ class SplashActivity : AppCompatActivity() {
         editor.putInt("lastopen", Date().hours)
         editor.apply()
 
-        if (lastopen == Date().hours) {
-//           cekUpdateApp()
-            showSplash()
-        }
-        else {
+//        if (lastopen == Date().hours) {
+////           cekUpdateApp()
+//            showSplash()
+//        }
+//        else {
             cekUpdateApp()
 //            facebookAdsLoad()
-        }
+//        }
     }
 
     private fun cekUpdateApp() {
@@ -84,23 +82,26 @@ class SplashActivity : AppCompatActivity() {
 
                 if(infovCode < version){
                     Log.i("Respons", "New version O Browser is available on Google play store. Please Updated soon !!")
+                    runable = Runnable {
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Information Update")
+                        builder.setMessage("New version App is available on Google play store. Please Update Now !")
 
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Information Update")
-                    builder.setMessage("New version App is available on Google play store. Please Update Now !")
+                        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.ybrowser.master")
+                            startActivity(intent)
+                        }
 
-                    builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-                        val intent = Intent(Intent.ACTION_VIEW)
-                        intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.ybrowser.master")
-                        startActivity(intent)
+                        builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                            Log.i("Respons", "cancel update and load ads from server")
+                            facebookAdsLoadServer(interstitialIdObject)
+                        }
+
+                        builder.show()
                     }
+                    startDelay(3000)
 
-                    builder.setNegativeButton(android.R.string.no) { dialog, which ->
-                        Log.i("Respons", "cancel update and load ads from server")
-                        facebookAdsLoadServer(interstitialIdObject)
-                    }
-
-                    builder.show()
                 }else{
                     Log.i("Respons", "nothing updated in play store and load ads from server")
                     facebookAdsLoadServer(interstitialIdObject)
@@ -133,13 +134,14 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun facebookAdsLoadServer(idInterstitial: String) {
+        Log.i("Ads", idInterstitial)
     //facebookAds
         if (idInterstitial != null){
             interstitialAd = InterstitialAd(this, idInterstitial)
         }else{
             interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
         }
-        AdSettings.addTestDevice("04c1e69f-881f-443e-b419-6b0056114f53")
+        AdSettings.addTestDevice("1cca8ddf-a54b-4f4f-aa8b-d1a556c8a014")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
