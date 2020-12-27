@@ -17,8 +17,8 @@
     <string name="password">Save your passwords</string>
     <string name="agent">User agent</string>
     <string name="flash">Enable Adobe Flash</string>
-
-    <string name="fullscreen">F<string name="home">Homepage</string>ull-screen mode</string>
+    <string name="home">Homepage</string>
+    <string name="fullscreen">Full-screen mode</string>
     <string name="java">Enable JavaScript</string>
     <string name="download">Download location</string>
     <string name="settings_advanced">Advanced Settings</string>
