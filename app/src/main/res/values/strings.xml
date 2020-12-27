@@ -10,15 +10,15 @@
     <string name="action_add_bookmark">Add bookmark</string>
     <string name="action_copy">Copy link</string>
     <string name="action_forward">Forward</string>
-    <string name="id_banner">957023064793265_976868392808732</string>
-    <string name="id_interstitial">957023064793265_957023834793188</string>
+    <string name="id_banner">218982719579926_242799143864950</string>
+    <string name="id_interstitial">218982719579926_234446448033553</string>
     <string name="settings">Settings</string>
     <string name="location">Location access</string>
     <string name="password">Save your passwords</string>
     <string name="agent">User agent</string>
     <string name="flash">Enable Adobe Flash</string>
-    <string name="home">Homepage</string>
-    <string name="fullscreen">Full-screen mode</string>
+
+    <string name="fullscreen">F<string name="home">Homepage</string>ull-screen mode</string>
     <string name="java">Enable JavaScript</string>
     <string name="download">Download location</string>
     <string name="settings_advanced">Advanced Settings</string>

@@ -31,7 +31,6 @@ class SplashActivity : AppCompatActivity() {
     private val TAG: String = SplashActivity::class.java.getSimpleName()
     private var interstitialAd: InterstitialAd? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -74,6 +73,10 @@ class SplashActivity : AppCompatActivity() {
                 val resp= response.toString()
                 val jsonObject= JSONObject(resp)
                 val version = jsonObject.getInt("version_code")
+                val interstitialIdObject = jsonObject.getString("id_interstitial")
+                val bannerIdObject = jsonObject.getString("id_banner")
+
+                Log.i("id_ads", "id interstitial : $interstitialIdObject id banner : $bannerIdObject")
 
                 val manager = this.packageManager
                 val info = manager.getPackageInfo(this.packageName, PackageManager.GET_ACTIVITIES)
@@ -93,21 +96,21 @@ class SplashActivity : AppCompatActivity() {
                     }
 
                     builder.setNegativeButton(android.R.string.no) { dialog, which ->
-                        Log.i("Respons", "cancel update")
-                        facebookAdsLoad()
+                        Log.i("Respons", "cancel update and load ads from server")
+                        facebookAdsLoadServer(interstitialIdObject)
                     }
 
                     builder.show()
                 }else{
-                    Log.i("Respons", "nothing updated in play store")
-                    showSplash()
+                    Log.i("Respons", "nothing updated in play store and load ads from server")
+                    facebookAdsLoadServer(interstitialIdObject)
                 }
 
 
             },
             Response.ErrorListener {
-                Log.e("ResponsError", "No Data")
-                showSplash()
+                Log.e("ResponsError", "No Data and load ads from local")
+                facebookAdsLoad()
             })
         queue.add(stringReq)
     }
@@ -129,9 +132,13 @@ class SplashActivity : AppCompatActivity() {
         startDelay(4000)
     }
 
-    private fun facebookAdsLoad() {
+    private fun facebookAdsLoadServer(idInterstitial: String) {
     //facebookAds
-        interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
+        if (idInterstitial != null){
+            interstitialAd = InterstitialAd(this, idInterstitial)
+        }else{
+            interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
+        }
 //        AdSettings.addTestDevice("04c1e69f-881f-443e-b419-6b0056114f53")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
@@ -192,6 +199,68 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
+    private fun facebookAdsLoad() {
+        //facebookAds
+         interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
+//        AdSettings.addTestDevice("04c1e69f-881f-443e-b419-6b0056114f53")
+        interstitialAd!!.setAdListener(object : InterstitialAdListener {
+            override fun onInterstitialDisplayed(ad: Ad?) {}
+            override fun onInterstitialDismissed(ad: Ad?) {
+//                finish()
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            }
+            override fun onError(ad: Ad?, adError: AdError?) {
+                // Interstitial ad is loaded and ready to be displayed
+//                Log.e(TAG, "Interstitial ad is error to display")
+//                // Show the ad
+//                if(!adRespons)
+//                    return
+//
+//                handler.removeCallbacks(runable)
+//                handler.post(runable)
+                Log.i("Ads", "onAdError ${adError?.errorMessage}")
+            }
+            override fun onAdLoaded(ad: Ad?) {
+                // Interstitial ad is loaded and ready to be displayed
+//                Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!")
+//                // Show the ad
+                if(!adRespons)
+                    return
+
+                handler.removeCallbacks(runable)
+                handler.post(runable)
+//                interstitialAd!!.show()
+                Log.i("Ads", "onAdsLoad")
+            }
+
+            override fun onAdClicked(ad: Ad?) {
+                // Ad clicked callback
+                Log.d(TAG, "Interstitial ad clicked!")
+            }
+
+            override fun onLoggingImpression(ad: Ad?) {
+                // Ad impression logged callback
+                Log.d(TAG, "Interstitial ad impression logged!")
+            }
+        })
+        interstitialAd!!.loadAd()
+
+        runable = Runnable {
+            adRespons = false
+            if (interstitialAd!!.isAdLoaded){
+                Log.i("Ads", "Adds Show")
+//                opened this comment if you want show this ads
+                interstitialAd!!.show()
+            }else{
+                Log.d("Ads", "Ads not show")
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
+            }
+        }
+
+        startDelay(4000)
+
+    }
     fun isNetworkAvailable(context: Context): Boolean {
         val connectivity = context
                 .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
