@@ -96,8 +96,7 @@ class SplashActivity : AppCompatActivity() {
                         }
                         startDelay(3000)
 
-                    }
-                    else {
+                    } else {
                         facebookAdsLoadServer(interstitialIdObject)
                     }
 
