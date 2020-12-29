@@ -65,11 +65,11 @@ class SplashActivity : AppCompatActivity() {
                     val infovCode= info.versionCode
 
                     if(infovCode < version){
-                        Log.i("Respons", "New version O Browser is available on Google play store. Please Updated soon !!")
+                        Log.i("Respons", "New version x Browser is available on Google play store. Please Updated soon !!")
                         if (lastopen == Date().hours) {
                             runable = Runnable {
                                 val builder = AlertDialog.Builder(this)
-                                builder.setTitle("Information Update")
+//                                builder.setTitle("Information Update")
                                 builder.setMessage("New version App is available on Google play store. Please Update Now !")
 
                                 builder.setPositiveButton(android.R.string.yes) { dialog, which ->
