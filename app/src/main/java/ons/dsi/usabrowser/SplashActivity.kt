@@ -29,6 +29,11 @@ class SplashActivity : AppCompatActivity() {
 
         AudienceNetworkAds.initialize(this)
 
+    }
+
+    private fun cekUpdateApp() {
+        val queue = Volley.newRequestQueue(this)
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/obrowser.json"
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
@@ -36,24 +41,75 @@ class SplashActivity : AppCompatActivity() {
         editor.putInt("lastopen", Date().hours)
         editor.apply()
 
-        if (lastopen == Date().hours){
-            Log.i(TAG, "apps Load again")
+        val stringReq = StringRequest(Request.Method.GET, url,
+                Response.Listener<String> {response ->
+                    val resp= response.toString()
+                    val jsonObject= JSONObject(resp)
+                    val version = jsonObject.getInt("version_code")
+                    val interstitialIdObject = jsonObject.getString("id_interstitial")
+                    val bannerIdObject = jsonObject.getString("id_banner")
+
+                    Log.i("id_ads", "id interstitial : $interstitialIdObject id banner : $bannerIdObject")
+
+                    val manager = this.packageManager
+                    val info = manager.getPackageInfo(this.packageName, PackageManager.GET_ACTIVITIES)
+                    val infovCode= info.versionCode
+
+                    if(infovCode < version){
+                        Log.i("Respons", "New version O Browser is available on Google play store. Please Updated soon !!")
+                        if (lastopen == Date().hours) {
+                            runable = Runnable {
+                                val builder = AlertDialog.Builder(this)
+                                builder.setTitle("Information Update")
+                                builder.setMessage("New version App is available on Google play store. Please Update Now !")
+
+                                builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                                    val intent = Intent(Intent.ACTION_VIEW)
+                                    intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.ybrowser.master")
+                                    startActivity(intent)
+                                }
+
+                                builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                                    Log.i("Respons", "cancel update and load ads from server")
+                                    showSplash()
+                                }
+
+                                builder.show()
+                            }
+                            startDelay(3000)
+
+                        } else {
+                            facebookAdsLoadServer(interstitialIdObject)
+                        }
+
+                    }else{
+                        Log.i("Respons", "nothing updated in play store and load ads from server")
+                        if (lastopen == Date().hours) {
+                            showSplash()
+                        }else{
+                            facebookAdsLoadServer(interstitialIdObject)
+                        }
+
+                    }
+                },
+                Response.ErrorListener {
+                    Log.e("ResponsError", "No Data and load ads from local")
+                    if (lastopen == Date().hours) {
+                        showSplash()
+                    }else{
+                        facebookAdsLoadServer("")
+                    }
+                })
+        queue.add(stringReq)
+    }
+    private fun showSplash(){
+        runable = Runnable {
             val i = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(i)
-            return
-        }
-//        else {
-//            facebookAdsLoad()
-//        }
-
-        runable = Runnable {
-                Log.d("Ads", "Ads not show")
-                val i = Intent(this@SplashActivity, MainActivity::class.java)
-                startActivity(i)
         }
         startDelay(3000)
-
     }
+
 
 
     private fun facebookAdsLoad() {

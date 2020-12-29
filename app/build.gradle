@@ -169,6 +169,9 @@ dependencies {
     implementation 'com.facebook.android:audience-network-sdk:5.+'
     implementation 'com.victor:lib:1.0.4'
 
+    //volley
+    implementation 'com.android.volley:volley:1.1.1'
+
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     implementation 'androidx.core:core-ktx:1.0.1'
