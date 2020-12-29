@@ -127,7 +127,7 @@ class SplashActivity : AppCompatActivity() {
         }else{
             interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
         }
-        AdSettings.addTestDevice("1cca8ddf-a54b-4f4f-aa8b-d1a556c8a014")
+        AdSettings.addTestDevice("afceedf3-0396-4be0-add3-a86ccdab409d")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
