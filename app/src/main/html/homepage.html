@@ -60,7 +60,7 @@ output h1 {
 }
 
 div.favicon_all{margin:0 5%}
-div.favicon_img{width:21%;margin:2%;float:left}
+div.favicon_img{width:15%;margin:2%;float:left}
 div.favicon_img img {width:50px;height:50px}
 div.favicon_name{padding:2%;text-align:center;font-size:80%}
 
@@ -75,16 +75,15 @@ span {
 	display:table;
 	vertical-align:middle;
 	width:90%;
-	height:35px;
+	height:40px;
 	max-width:500px;
 	margin:0 auto;
 	background-color:#fff;
-	box-shadow: 0px 2px 3px rgba( 0, 0, 0, 0.25 );
 	font-family: Arial;
-	color: #444;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+	color: #cccdcc;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+	border-radius: 40px;
 }
 
 #search_submit{
@@ -116,7 +115,7 @@ span {
 	width: 100%;
 }
 
-img.smaller{width:30%;max-width:200px;}
+img.smaller{width:36%;max-width:200px;}
 
 .box {
 	vertical-align:middle;
@@ -142,11 +141,11 @@ img.smaller{width:30%;max-width:200px;}
 </br></br></br></br></br>
 <div class="outer">
     <div class="middle"><div class="inner">
-        <img id="image_url" class="smaller" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8IS0tIENyZWF0b3I6IENvcmVsRFJBVyBYNyAtLT4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMjM3cHgiIGhlaWdodD0iMjM3cHgiIHZlcnNpb249IjEuMSIgc2hhcGUtcmVuZGVyaW5nPSJnZW9tZXRyaWNQcmVjaXNpb24iIHRleHQtcmVuZGVyaW5nPSJnZW9tZXRyaWNQcmVjaXNpb24iIGltYWdlLXJlbmRlcmluZz0ib3B0aW1pemVRdWFsaXR5IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCINCnZpZXdCb3g9IjAgMCAxNjU5IDE2NTkiDQogeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPg0KIDxnIGlkPSJMYXllcl94MDAyMF8xIj4NCiAgPG1ldGFkYXRhIGlkPSJDb3JlbENvcnBJRF8wQ29yZWwtTGF5ZXIiLz4NCiAgPHJlY3QgZmlsbD0iIzBGQjdFQiIgd2lkdGg9IjE2NTkiIGhlaWdodD0iMTY1OSIgcng9IjIzMyIgcnk9IjIzMyIvPg0KICA8cGF0aCBmaWxsPSIjRkVGRUZFIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xMzk1IDQ0NGMtMjgsOCAtNTEsNyAtNTEsN2wxIC02YzI3LC0yMSA5NCwtODcgMTAzLC0xMTggNCwtMTMgLTEsLTE3IC0xLC0xOGwtODYgMzcgLTcyIDMyIDAgMGMtNTAsLTUyIC0xMjUsLTg2IC0yMTAsLTg2IC0xNTAsMCAtMjcyLDEwNiAtMjcyLDIzNyAwLDI1IDQsNjggMTIsOTAgMCw3IDAsLTcgMCwwIC05NywtMyAtMjIxLC00MiAtMzMxLC05OCAtMjE4LC0xMTAgLTIzMiwtMTg3IC0yMzIsLTE4NyAtMzQsMzcgLTUyLDE1NyAtMTcsMjUxIDIyLDYwIDk5LDExNSA5OSwxMTVsMCAwYzAsMCAtMzUsMCAtNzAsLTEyIC0zNiwtMTIgLTQ5LC0yNCAtNDksLTI0IC0yMiw1MiAyMSwxNDQgOTUsMjExIDQyLDM4IDEyMSw2MyAxMjEsNjNsLTEyMyAzYy03LDExOSAyNTAsMTkwIDI1MCwxOTBsMCAwYy03NSw1OCAtMTYyLDkzIC0yNTYsOTMgLTQ4LDAgLTk1LC03IC0xNDAsLTIxIDEyNCwxMDIgMjgzLDE3MyA0NTUsMTYzIDQ1OSwtMjQgNzE3LC00MTcgNzI5LC04MDRsMSAxYzAsMCAyMiwtMTEgNjcsLTU3IDQ2LC00NiA3NSwtMTAwIDc1LC0xMDAgMCwwIC02OSwzMCAtOTgsMzh6Ii8+DQogPC9nPg0KPC9zdmc+DQo=">
-        </br></br>
+        <img id="image_url" class="smaller" src="${IMAGE}">
+        </br></br></br></br>
 
         <form onsubmit="return search()" class="search_bar" autocomplete="off">
-            <input type="submit" id="search_submit" value="Search" >
+            <input type="submit" id="search_submit" value="" >
             <span>
 		<input class="search" type="text" value="" id="search_input" >
 	</span>

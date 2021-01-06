@@ -30,7 +30,7 @@ class HomePageFactory @Inject constructor(
                 title { title }
                 charset { UTF8 }
                 body {
-//                    id("image_url") { attr("src", iconUrl) }
+                    id("image_url") { attr("src", iconUrl) }
                     tag("script") {
                         html(
                             html()
