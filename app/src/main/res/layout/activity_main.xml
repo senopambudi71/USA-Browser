@@ -29,11 +29,14 @@
                 <LinearLayout
                     android:visibility="visible"
                     android:id="@+id/banner_container"
+                    android:background="@drawable/banner_bg"
                     android:padding="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:orientation="vertical" />
+                    android:orientation="vertical" >
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:visibility="gone"
