@@ -30,11 +30,21 @@
                     android:visibility="visible"
                     android:id="@+id/banner_container"
                     android:background="@drawable/banner_bg"
-                    android:padding="3dp"
+                    android:paddingTop="3dp"
+                    android:paddingLeft="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingRight="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/tv_ads"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ads"
+                        android:gravity="top"/>
 
                 </LinearLayout>
 
