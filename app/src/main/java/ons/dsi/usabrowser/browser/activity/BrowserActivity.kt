@@ -260,6 +260,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val adContainer = findViewById(R.id.banner_container) as LinearLayout
         adContainer.addView(adView)
         adView.loadAd()
+        tv_ads.visibility = View.VISIBLE
     }
 
     private fun initialize(savedInstanceState: Bundle?) {
