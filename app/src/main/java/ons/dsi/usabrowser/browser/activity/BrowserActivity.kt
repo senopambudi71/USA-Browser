@@ -83,6 +83,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.palette.graphics.Palette
 import butterknife.ButterKnife
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.anthonycr.grant.PermissionsManager
 import com.facebook.ads.AdSize
 import com.facebook.ads.AdView
@@ -95,6 +99,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
+import org.json.JSONObject
 import java.io.IOException
 import javax.inject.Inject
 
@@ -217,6 +222,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         injector.inject(this)
         setContentView(R.layout.activity_main)
         showBanner()
+        getIdBanner()
         ButterKnife.bind(this)
 
         val incognitoNotification = IncognitoNotification(this, notificationManager)
@@ -244,6 +250,24 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
        // startAppAd = StartAppAd(this)
 
         initialize(savedInstanceState)
+    }
+
+    private fun getIdBanner() {
+        val queue = Volley.newRequestQueue(this)
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/obrowser.json"
+
+        val stringReq = StringRequest(Request.Method.GET, url,
+                Response.Listener<String> { response ->
+                    val resp= response.toString()
+                    val jsonObject= JSONObject(resp)
+                    val bannerIdObject = jsonObject.getString("id_banner")
+                    logger.log("ads id", bannerIdObject)
+
+                },
+                Response.ErrorListener {
+                    logger.log("ResponsError", "No Data and load ads from local")
+                })
+        queue.add(stringReq)
     }
 
     private fun showBannerStartApp() {
