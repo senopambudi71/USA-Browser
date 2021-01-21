@@ -29,23 +29,16 @@
                 <LinearLayout
                     android:visibility="visible"
                     android:id="@+id/banner_container"
-                    android:background="@drawable/banner_bg"
-                    android:paddingTop="3dp"
-                    android:paddingLeft="3dp"
-                    android:paddingBottom="3dp"
-                    android:paddingRight="3dp"
+                    android:background="@drawable/ads_bg"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="0dp"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="bottom"
                     android:layout_alignParentBottom="true"
                     android:orientation="vertical" >
-                    <TextView
-                        android:id="@+id/tv_ads"
-                        android:background="@drawable/banner_bg"
-                        android:visibility="gone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ads"
-                        android:gravity="top"/>
 
                 </LinearLayout>
 
@@ -62,6 +55,7 @@
                         android:layout_centerHorizontal="true"/>
                 </LinearLayout>
             </LinearLayout>
+
 
             <FrameLayout
                 android:id="@+id/left_drawer"
