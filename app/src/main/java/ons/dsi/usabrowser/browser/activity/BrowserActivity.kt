@@ -221,7 +221,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         super.onCreate(savedInstanceState)
         injector.inject(this)
         setContentView(R.layout.activity_main)
-        showBanner()
         getIdBanner()
         ButterKnife.bind(this)
 
@@ -262,7 +261,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                     val jsonObject= JSONObject(resp)
                     val bannerIdObject = jsonObject.getString("id_banner")
                     logger.log("ads id", bannerIdObject)
-
+                    showBanner(bannerIdObject)
                 },
                 Response.ErrorListener {
                     logger.log("ResponsError", "No Data and load ads from local")
@@ -275,9 +274,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         banner.loadAd()
     }
 
-    private fun showBanner() {
+    private fun showBanner(idBanner: String) {
         //for testing
-//        adView = AdView(this, "IMG_16_9_APP_INSTALL#218982719579926_256009505877247", AdSize.BANNER_HEIGHT_50)
+        adView = AdView(this, "IMG_16_9_APP_INSTALL#$idBanner", AdSize.BANNER_HEIGHT_50)
 
         //for playstore
         adView = AdView(this, getString(R.string.id_banner), AdSize.BANNER_HEIGHT_50)
