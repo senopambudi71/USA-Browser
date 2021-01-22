@@ -74,7 +74,7 @@ class SplashActivity : AppCompatActivity() {
                 val infovCode= info.versionCode
 
                 if(infovCode < version){
-                    Log.i("Respons", "New version O Browser is available on Google play store. Please Updated soon !!")
+                    Log.i("Respons", "New version is available on Google play store. Please Updated soon !!")
                     if (lastopen == Date().hours) {
                         runable = Runnable {
                             val builder = AlertDialog.Builder(this)
@@ -83,7 +83,7 @@ class SplashActivity : AppCompatActivity() {
 
                             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                                 val intent = Intent(Intent.ACTION_VIEW)
-                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=com.ybrowser.master")
+                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=lite.open.browser5g")
                                 startActivity(intent)
                             }
 
@@ -141,12 +141,9 @@ class SplashActivity : AppCompatActivity() {
     private fun facebookAdsLoadServer(idInterstitial: String) {
         Log.i("Ads", idInterstitial)
     //facebookAds
-        if (idInterstitial != ""){
-            interstitialAd = InterstitialAd(this, idInterstitial)
-        }else{
-            interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
-        }
-//        AdSettings.addTestDevice("1cca8ddf-a54b-4f4f-aa8b-d1a556c8a014")
+        interstitialAd = InterstitialAd(this, idInterstitial)
+
+        AdSettings.addTestDevice("1cca8ddf-a54b-4f4f-aa8b-d1a556c8a014")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
             override fun onInterstitialDismissed(ad: Ad?) {
