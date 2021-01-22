@@ -126,7 +126,7 @@ class SplashActivity : AppCompatActivity() {
                 val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
         }
-        startDelay(3000)
+        startDelay(2000)
     }
 
     private fun showStartApp() {
