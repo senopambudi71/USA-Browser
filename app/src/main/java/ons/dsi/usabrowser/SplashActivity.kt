@@ -51,7 +51,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun cekUpdateApp() {
         val queue = Volley.newRequestQueue(this)
-        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/obrowser.json"
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/5gbrowser.json"
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
