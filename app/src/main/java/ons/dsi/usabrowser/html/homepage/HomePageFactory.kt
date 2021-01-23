@@ -30,14 +30,14 @@ class HomePageFactory @Inject constructor(
                 title { title }
                 charset { UTF8 }
                 body {
-                    id("image_url") { attr("src", iconUrl) }
-                    tag("script") {
-                        html(
-                            html()
-                                .replace("\${BASE_URL}", queryUrl)
-                                .replace("&", "\\u0026")
-                        )
-                    }
+//                    id("image_url") { attr("src", iconUrl) }
+//                    tag("script") {
+//                        html(
+//                            html()
+//                                .replace("\${BASE_URL}", queryUrl)
+//                                .replace("&", "\\u0026")
+//                        )
+//                    }
                 }
             }
         }
