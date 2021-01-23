@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <string name="app_name">O Browser</string>
+    <string name="app_name">XBrowser</string>
     <string name="action_new_tab">New tab</string>
     <string name="action_share">Share</string>
     <string name="action_history">History</string>
@@ -10,8 +10,8 @@
     <string name="action_add_bookmark">Add bookmark</string>
     <string name="action_copy">Copy link</string>
     <string name="action_forward">Forward</string>
-    <string name="id_banner">218982719579926_256009505877247</string>
-    <string name="id_interstitial">218982719579926_234446448033553</string>
+    <string name="id_banner">3671302622989220_3671306542988828</string>
+    <string name="id_interstitial">3671302622989220_3677804929005656</string>
     <string name="settings">Settings</string>
     <string name="location">Location access</string>
     <string name="password">Save your passwords</string>
