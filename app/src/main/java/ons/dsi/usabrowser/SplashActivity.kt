@@ -67,7 +67,7 @@ class SplashActivity : AppCompatActivity() {
                 val interstitialIdObject = jsonObject.getString("id_interstitial")
                 val bannerIdObject = jsonObject.getString("id_banner")
 
-                Log.i("id_ads", "id interstitial : $interstitialIdObject id banner : $bannerIdObject")
+                Log.i("id_ads", "id interstitial : $interstitialIdObject id banner : $bannerIdObject day : ${Date().day}")
 
                 val manager = this.packageManager
                 val info = manager.getPackageInfo(this.packageName, PackageManager.GET_ACTIVITIES)
