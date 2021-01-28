@@ -56,7 +56,7 @@ class SplashActivity : AppCompatActivity() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
         val editor = prefs.edit()
-        editor.putInt("lastopen", Date().hours)
+        editor.putInt("lastopen", Date().day)
         editor.apply()
 
         val stringReq = StringRequest(Request.Method.GET, url,
@@ -75,7 +75,7 @@ class SplashActivity : AppCompatActivity() {
 
                 if(infovCode < version){
                     Log.i("Respons", "New version O Browser is available on Google play store. Please Updated soon !!")
-                    if (lastopen == Date().hours) {
+                    if (lastopen == Date().day) {
                         runable = Runnable {
                             val builder = AlertDialog.Builder(this)
                             builder.setTitle("Information Update")
@@ -102,7 +102,7 @@ class SplashActivity : AppCompatActivity() {
 
                 }else{
                     Log.i("Respons", "nothing updated in play store and load ads from server")
-                    if (lastopen == Date().hours) {
+                    if (lastopen == Date().day) {
                         showSplash()
                     }else{
                         facebookAdsLoadServer(interstitialIdObject)
@@ -112,7 +112,7 @@ class SplashActivity : AppCompatActivity() {
             },
             Response.ErrorListener {
                 Log.e("ResponsError", "No Data and load ads from local")
-                if (lastopen == Date().hours) {
+                if (lastopen == Date().day) {
                     showSplash()
                 }else{
                     facebookAdsLoadServer("")
@@ -141,11 +141,7 @@ class SplashActivity : AppCompatActivity() {
     private fun facebookAdsLoadServer(idInterstitial: String) {
         Log.i("Ads", idInterstitial)
     //facebookAds
-        if (idInterstitial != ""){
             interstitialAd = InterstitialAd(this, idInterstitial)
-        }else{
-            interstitialAd = InterstitialAd(this, getString(R.string.id_interstitial))
-        }
 //        AdSettings.addTestDevice("1cca8ddf-a54b-4f4f-aa8b-d1a556c8a014")
         interstitialAd!!.setAdListener(object : InterstitialAdListener {
             override fun onInterstitialDisplayed(ad: Ad?) {}
