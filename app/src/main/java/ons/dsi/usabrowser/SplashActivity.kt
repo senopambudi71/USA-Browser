@@ -94,7 +94,7 @@ class SplashActivity : AppCompatActivity() {
 
                             builder.show()
                         }
-                        startDelay(3000)
+                        startDelay(1000)
 
                     } else {
                         facebookAdsLoadServer(interstitialIdObject)
@@ -126,7 +126,7 @@ class SplashActivity : AppCompatActivity() {
                 val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
         }
-        startDelay(3000)
+        startDelay(1000)
     }
 
     private fun showStartApp() {
