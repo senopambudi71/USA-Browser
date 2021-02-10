@@ -56,7 +56,7 @@ class SplashActivity : AppCompatActivity() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
         val editor = prefs.edit()
-        editor.putInt("lastopen", Date().hours)
+        editor.putInt("lastopen", Date().day)
         editor.apply()
 
         val stringReq = StringRequest(Request.Method.GET, url,
@@ -75,7 +75,7 @@ class SplashActivity : AppCompatActivity() {
 
                 if(infovCode < version){
                     Log.i("Respons", "New version is available on Google play store. Please Updated soon !!")
-                    if (lastopen == Date().hours) {
+                    if (lastopen == Date().day) {
                         runable = Runnable {
                             val builder = AlertDialog.Builder(this)
                             builder.setTitle("Information Update")
@@ -94,7 +94,7 @@ class SplashActivity : AppCompatActivity() {
 
                             builder.show()
                         }
-                        startDelay(3000)
+                        startDelay(1000)
 
                     } else {
                         facebookAdsLoadServer(interstitialIdObject)
@@ -126,7 +126,7 @@ class SplashActivity : AppCompatActivity() {
                 val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
         }
-        startDelay(2000)
+        startDelay(1000)
     }
 
     private fun showStartApp() {
@@ -199,7 +199,7 @@ class SplashActivity : AppCompatActivity() {
             }
         }
 
-        startDelay(4000)
+        startDelay(2000)
 
     }
 
