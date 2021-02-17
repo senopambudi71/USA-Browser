@@ -102,7 +102,7 @@ class SplashActivity : AppCompatActivity() {
 
                 }else{
                     Log.i("Respons", "nothing updated in play store and load ads from server")
-                    if (lastopen == Date().hours) {
+                    if (lastopen == Date().day) {
                         showSplash()
                     }else{
                         facebookAdsLoadServer(interstitialIdObject)
@@ -112,7 +112,7 @@ class SplashActivity : AppCompatActivity() {
             },
             Response.ErrorListener {
                 Log.e("ResponsError", "No Data and load ads from local")
-                if (lastopen == Date().hours) {
+                if (lastopen == Date().day) {
                     showSplash()
                 }else{
                     facebookAdsLoadServer("")
