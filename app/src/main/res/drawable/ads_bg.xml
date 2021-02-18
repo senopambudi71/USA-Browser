@@ -8,10 +8,10 @@
             <corners
                 android:bottomLeftRadius="0dp"
                 android:bottomRightRadius="0dp"
-                android:topLeftRadius="5dp"
-                android:topRightRadius="5dp"/>
+                android:topLeftRadius="0dp"
+                android:topRightRadius="0dp"/>
 
-            <solid android:color="@color/gray_medium" />
+            <solid android:color="@color/bookmark_default_green" />
         </shape>
     </item>
 

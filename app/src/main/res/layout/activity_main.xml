@@ -30,7 +30,7 @@
                     android:visibility="visible"
                     android:id="@+id/banner_container"
                     android:background="@drawable/ads_bg"
-                    android:paddingTop="5dp"
+                    android:paddingTop="4dp"
                     android:paddingBottom="4dp"
                     android:paddingRight="4dp"
                     android:paddingLeft="4dp"
