@@ -27,7 +27,7 @@
 
 
                 <LinearLayout
-                    android:visibility="visible"
+                    android:visibility="invisible"
                     android:id="@+id/banner_container"
                     android:background="@drawable/ads_bg"
                     android:paddingTop="4dp"
@@ -35,7 +35,7 @@
                     android:paddingRight="4dp"
                     android:paddingLeft="4dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:gravity="bottom"
                     android:layout_alignParentBottom="true"
                     android:orientation="vertical" >

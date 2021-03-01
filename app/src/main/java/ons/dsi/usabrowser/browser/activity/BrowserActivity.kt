@@ -99,6 +99,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
+import ons.dsi.usabrowser.constant.SCHEME_HOMEPAGE
 import org.json.JSONObject
 import java.io.IOException
 import javax.inject.Inject
@@ -221,7 +222,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         super.onCreate(savedInstanceState)
         injector.inject(this)
         setContentView(R.layout.activity_main)
-        getIdBanner()
         ButterKnife.bind(this)
 
         val incognitoNotification = IncognitoNotification(this, notificationManager)
@@ -234,6 +234,15 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 }
             }
         }
+
+        if(userPreferences.homepage == SCHEME_HOMEPAGE){
+            banner_container.visibility= View.VISIBLE
+        }else{
+            banner_container.visibility= View.GONE
+        }
+
+        logger.log("ResponsError", userPreferences.homepage.toString())
+        getIdBanner()
 
         presenter = BrowserPresenter(
             this,

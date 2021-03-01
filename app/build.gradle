@@ -166,7 +166,7 @@ dependencies {
     implementation 'com.startapp:inapp-sdk:4.6.+'
 
     //faceBookAds
-    implementation 'com.facebook.android:audience-network-sdk:6.+'
+    implementation 'com.facebook.android:audience-network-sdk:5.+'
     implementation 'com.victor:lib:1.0.4'
 
     //volley

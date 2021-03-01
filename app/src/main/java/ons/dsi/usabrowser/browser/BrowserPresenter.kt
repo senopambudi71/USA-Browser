@@ -141,7 +141,7 @@ class BrowserPresenter(
 
     }
 
-    private fun mapHomepageToCurrentUrl(): String {
+    fun mapHomepageToCurrentUrl(): String {
         val homepage = userPreferences.homepage
 
         return when (homepage) {
