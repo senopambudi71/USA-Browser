@@ -235,13 +235,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
         }
 
-        if(userPreferences.homepage == SCHEME_HOMEPAGE){
-            banner_container.visibility= View.VISIBLE
-        }else{
-            banner_container.visibility= View.GONE
-        }
+//        if(userPreferences.homepage == SCHEME_HOMEPAGE){
+//            banner_container.visibility= View.VISIBLE
+//        }else{
+//            banner_container.visibility= View.GONE
+//        }
 
-        logger.log("ResponsError", userPreferences.homepage.toString())
+//        logger.log("ResponsError", userPreferences.homepage.toString())
         getIdBanner()
 
         presenter = BrowserPresenter(

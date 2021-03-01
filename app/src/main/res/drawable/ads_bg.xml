@@ -11,7 +11,7 @@
                 android:topLeftRadius="0dp"
                 android:topRightRadius="0dp"/>
 
-            <solid android:color="@color/bookmark_default_green" />
+            <solid android:color="@color/browser_actions_bg_grey" />
         </shape>
     </item>
 
