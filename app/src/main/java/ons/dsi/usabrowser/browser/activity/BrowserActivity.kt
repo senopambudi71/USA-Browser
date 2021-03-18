@@ -262,7 +262,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private fun getIdBanner() {
         val queue = Volley.newRequestQueue(this)
-        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/newuc.json"
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/xprobrowser.json"
 
         val stringReq = StringRequest(Request.Method.GET, url,
                 Response.Listener<String> { response ->
