@@ -57,7 +57,7 @@ android {
         lightningPlus {
             dimension "capabilities"
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
-            applicationId "ons.dsi.usabrowser"
+            applicationId "ons.dsi.xbrowser"
             versionCode project.versionCode_plus
         }
 
