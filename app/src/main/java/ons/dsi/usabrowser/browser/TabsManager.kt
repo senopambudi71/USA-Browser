@@ -151,7 +151,7 @@ class TabsManager @Inject constructor(
      * saved on disk. Can potentially be empty.
      */
     private fun restorePreviousTabs(): Observable<TabInitializer> = readSavedStateFromDisk()
-        .map { bundle ->
+        ?.map { bundle ->
             return@map bundle.getString(URL_KEY)?.let { url ->
                 when {
                     UrlUtils.isBookmarkUrl(url) -> bookmarkPageInitializer
@@ -161,7 +161,7 @@ class TabsManager @Inject constructor(
                     else -> homePageInitializer
                 }
             } ?: BundleInitializer(bundle)
-        }
+        }!!
 
 
     /**
@@ -349,7 +349,7 @@ class TabsManager @Inject constructor(
      * on disk. After the list of bundle [Bundle] is read off disk, the old state will be deleted.
      * Can potentially be empty.
      */
-    private fun readSavedStateFromDisk(): Observable<Bundle> = Maybe
+    private fun readSavedStateFromDisk(): Observable<Bundle?>? = Maybe
         .fromCallable { FileUtils.readBundleFromStorage(application, BUNDLE_STORAGE) }
         .flattenAsObservable { bundle ->
             bundle.keySet()
