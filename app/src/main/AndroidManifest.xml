@@ -58,9 +58,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+<!--        for app id adsense xbrowser-->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2322131950454521~2034818350" />
+            android:value="ca-app-pub-1766769958657969~8292616231" />
         <meta-data
             android:name="android.webkit.WebView.MetricsOptOut"
             android:value="true" />

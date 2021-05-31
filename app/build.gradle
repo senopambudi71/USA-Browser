@@ -107,7 +107,7 @@ dependencies {
     // support libraries
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.android.gms:play-services-ads:17.2.0'
+    implementation 'com.google.android.gms:play-services-ads:20.1.0'
     implementation "androidx.palette:palette:1.0.0"
     implementation "androidx.annotation:annotation:1.0.2"
     implementation "androidx.vectordrawable:vectordrawable-animated:1.0.0"

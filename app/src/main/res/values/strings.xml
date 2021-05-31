@@ -12,6 +12,8 @@
     <string name="action_forward">Forward</string>
     <string name="id_banner">218982719579926_256009505877247</string>
     <string name="id_interstitial">218982719579926_234446448033553</string>
+    <string name="id_banner_adsense">ca-app-pub-1766769958657969/6787962872</string>
+    <string name="id_interstitial_adsense">ca-app-pub-1766769958657969/1344064503</string>
     <string name="settings">Settings</string>
     <string name="location">Location access</string>
     <string name="password">Save your passwords</string>
