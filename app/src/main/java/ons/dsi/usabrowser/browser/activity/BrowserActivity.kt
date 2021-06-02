@@ -90,6 +90,8 @@ import com.android.volley.toolbox.Volley
 import com.anthonycr.grant.PermissionsManager
 import com.facebook.ads.AdSize
 import com.facebook.ads.AdView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.startapp.sdk.ads.banner.Banner
 import io.reactivex.Completable
 import io.reactivex.Scheduler
@@ -121,6 +123,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     //facebook Ads
     private lateinit var adView: AdView
+
+    //google adsense
+    private lateinit var mAdView: com.google.android.gms.ads.AdView
+
 
     // Adapter
     private var suggestionsAdapter: SuggestionsAdapter? = null
@@ -223,6 +229,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         injector.inject(this)
         setContentView(R.layout.activity_main)
         ButterKnife.bind(this)
+        MobileAds.initialize(this)
 
         val incognitoNotification = IncognitoNotification(this, notificationManager)
         tabsManager.addTabNumberChangedListener {
@@ -256,6 +263,11 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             logger
         )
        // startAppAd = StartAppAd(this)
+
+//        google adsense
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
         initialize(savedInstanceState)
     }
