@@ -77,8 +77,8 @@ android {
         exclude '.readme'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -134,8 +134,8 @@ dependencies {
 
     // view binding
     final def butterKnifeVersion = '9.0.0-rc1'
-    implementation "com.jakewharton:butterknife:$butterKnifeVersion"
-    kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    implementation "com.jakewharton:butterknife:10.0.0"
+    kapt "com.jakewharton:butterknife-compiler:10.0.0"
 
     // permissions
     implementation 'com.anthonycr.grant:permissions:1.1.2'
@@ -209,10 +209,14 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testLightningPlusDebugUni
     final def kotlinDebugTree = fileTree(dir: "$buildDir/tmp/kotlin-classes/lightningPlusDebug", excludes: fileFilter)
     final def mainSrc = "${project.projectDir}/src/test/java"
 
-    sourceDirectories = files([mainSrc])
-    classDirectories = files([debugTree], [kotlinDebugTree])
-    executionData = fileTree(dir: "$buildDir", includes: [
-            "jacoco/testLightningPlusDebugUnitTest.exec",
-            "outputs/code-coverage/connected/*coverage.ec"
-    ])
+//    sourceDirectories = files([mainSrc])
+//    classDirectories = files([debugTree], [kotlinDebugTree])
+//    executionData = fileTree(dir: "$buildDir", includes: [
+//            "jacoco/testLightningPlusDebugUnitTest.exec",
+//            "outputs/code-coverage/connected/*coverage.ec"
+//    ])
+
+    build.doLast {
+        delete fileTree (dir: "${buildDir}/classes", include: "**/JiBX_bindings*.class")
+    }
 }
