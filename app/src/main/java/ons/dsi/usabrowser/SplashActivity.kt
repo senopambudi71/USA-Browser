@@ -18,6 +18,12 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.facebook.ads.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
+import com.google.android.gms.ads.interstitial.InterstitialAd.load
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.startapp.sdk.adsbase.StartAppAd
 import org.json.JSONObject
 import java.util.*
@@ -30,6 +36,8 @@ class SplashActivity : AppCompatActivity() {
     var handler = Handler()
     private val TAG: String = SplashActivity::class.java.getSimpleName()
     private var interstitialAd: InterstitialAd? = null
+//    google adsense
+//    private var mInterstitialAd: com.google.android.gms.ads.interstitial.InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +53,27 @@ class SplashActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
+//        MobileAds.initialize(this)
+
+//        var adRequest = AdRequest.Builder().build()
+
+//        RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("9A06C1F3F383553862F17FD820AAE154"))
+
+//        val testDeviceIds = Arrays.asList("9A06C1F3F383553862F17FD820AAE154")
+//        val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
+//        MobileAds.setRequestConfiguration(configuration)
+
+//        com.google.android.gms.ads.interstitial.InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+//            override fun onAdFailedToLoad(adError: LoadAdError) {
+//                Log.d(TAG, adError?.message)
+//                mInterstitialAd = null
+//            }
+//
+//            override fun onAdLoaded(interstitialAd: com.google.android.gms.ads.interstitial.InterstitialAd) {
+//                Log.d(TAG, "Ad was loaded.")
+//                mInterstitialAd = interstitialAd
+//            }
+//        })
 
         cekUpdateApp()
     }

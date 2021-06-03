@@ -250,6 +250,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
 //        logger.log("ResponsError", userPreferences.homepage.toString())
         getIdBanner()
+        bannerAdsense()
 
         presenter = BrowserPresenter(
             this,
@@ -264,12 +265,16 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         )
        // startAppAd = StartAppAd(this)
 
-//        google adsense
+
+        initialize(savedInstanceState)
+    }
+
+    private fun bannerAdsense(){
+        //        google adsense
         mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
 
-        initialize(savedInstanceState)
     }
 
     private fun getIdBanner() {
