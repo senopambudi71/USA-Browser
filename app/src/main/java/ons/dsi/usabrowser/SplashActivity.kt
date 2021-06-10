@@ -80,7 +80,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun cekUpdateApp() {
         val queue = Volley.newRequestQueue(this)
-        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/xbrowser.json"
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/agapus.json"
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
@@ -112,7 +112,7 @@ class SplashActivity : AppCompatActivity() {
 
                             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                                 val intent = Intent(Intent.ACTION_VIEW)
-                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.xbrowser")
+                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.agapus")
                                 startActivity(intent)
                             }
 
