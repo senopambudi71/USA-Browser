@@ -26,6 +26,7 @@
                 <include layout="@layout/search_interface"/>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:background="@color/browser_actions_bg_grey"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
@@ -44,7 +45,7 @@
 
                 </LinearLayout>
                 <LinearLayout
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:id="@+id/banner_container"
                     android:background="@drawable/ads_bg"
                     android:paddingTop="4dp"
@@ -52,7 +53,7 @@
                     android:paddingRight="4dp"
                     android:paddingLeft="4dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
                     android:gravity="bottom"
                     android:layout_alignParentBottom="true"
                     android:orientation="vertical" >
