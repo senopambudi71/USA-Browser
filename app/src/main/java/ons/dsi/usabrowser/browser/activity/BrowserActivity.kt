@@ -250,7 +250,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
 //        logger.log("ResponsError", userPreferences.homepage.toString())
         getIdBanner()
-        bannerAdsense()
+//        bannerAdsense()
 
         presenter = BrowserPresenter(
             this,
@@ -279,7 +279,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private fun getIdBanner() {
         val queue = Volley.newRequestQueue(this)
-        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/xbrowser.json"
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/agapus.json"
 
         val stringReq = StringRequest(Request.Method.GET, url,
                 Response.Listener<String> { response ->
