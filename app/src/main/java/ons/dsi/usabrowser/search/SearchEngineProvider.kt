@@ -30,7 +30,7 @@ class SearchEngineProvider @Inject constructor(
             2 -> DuckSuggestionsModel(httpClient, requestFactory, application, logger)
             3 -> BaiduSuggestionsModel(httpClient, requestFactory, application, logger)
             4 -> NaverSuggestionsModel(httpClient, requestFactory, application, logger)
-            else -> GoogleSuggestionsModel(httpClient, requestFactory, application, logger)
+            else -> DuckSuggestionsModel(httpClient, requestFactory, application, logger)
         }
 
     /**
@@ -50,7 +50,7 @@ class SearchEngineProvider @Inject constructor(
             9 -> BaiduSearch()
             10 -> YandexSearch()
             11 -> NaverSearch()
-            else -> GoogleSearch()
+            else -> DuckLiteSearch()
         }
 
     /**

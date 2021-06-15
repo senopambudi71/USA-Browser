@@ -11,6 +11,7 @@ import ons.dsi.usabrowser.preference.delegates.stringPreference
 import ons.dsi.usabrowser.search.engine.GoogleSearch
 import ons.dsi.usabrowser.utils.FileUtils
 import android.content.SharedPreferences
+import ons.dsi.usabrowser.search.engine.DuckSearch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -57,7 +58,7 @@ class UserPreferences @Inject constructor(
 
     var searchChoice by preferences.intPreference(SEARCH, 1)
 
-    var searchUrl by preferences.stringPreference(SEARCH_URL, GoogleSearch().queryUrl)
+    var searchUrl by preferences.stringPreference(SEARCH_URL, DuckSearch().queryUrl)
 
     var textReflowEnabled by preferences.booleanPreference(TEXT_REFLOW, false)
 
