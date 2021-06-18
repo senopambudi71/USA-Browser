@@ -250,7 +250,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
 //        logger.log("ResponsError", userPreferences.homepage.toString())
         getIdBanner()
-        bannerAdsense()
+//        bannerAdsense()
 
         presenter = BrowserPresenter(
             this,
