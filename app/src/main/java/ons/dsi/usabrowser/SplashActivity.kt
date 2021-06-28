@@ -80,7 +80,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun cekUpdateApp() {
         val queue = Volley.newRequestQueue(this)
-        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/webbrowser.json"
+        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/xxbrowser.json"
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this)
         val lastopen = prefs.getInt("lastopen", 0)
@@ -112,7 +112,7 @@ class SplashActivity : AppCompatActivity() {
 
                             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                                 val intent = Intent(Intent.ACTION_VIEW)
-                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.webbrowser")
+                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.xxbrowser")
                                 startActivity(intent)
                             }
 
