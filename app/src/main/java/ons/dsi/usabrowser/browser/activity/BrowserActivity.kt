@@ -61,6 +61,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.style.CharacterStyle
 import android.text.style.ParagraphStyle
+import android.util.Log
 import android.view.*
 import android.view.View.*
 import android.view.ViewGroup.LayoutParams
@@ -88,6 +89,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.anthonycr.grant.PermissionsManager
+import com.facebook.ads.AdSettings
 import com.facebook.ads.AdSize
 import com.facebook.ads.AdView
 import com.google.android.gms.ads.AdRequest
@@ -302,6 +304,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private fun showBanner(idBanner: String) {
         //for testing
+//        AdSettings.setDebugBuild(true)
+//        AdSettings.addTestDevice("6018172f-b2b5-44ba-afec-39002aa66a08")
+        Log.i("show banner", idBanner)
 //        adView = AdView(this, "IMG_16_9_APP_INSTALL#$idBanner", AdSize.BANNER_HEIGHT_50)
 
         //for playstore

@@ -173,61 +173,83 @@ class SplashActivity : AppCompatActivity() {
         interstitialAd = InterstitialAd(this, idInterstitial)
 
   //      AdSettings.addTestDevice("1cca8ddf-a54b-4f4f-aa8b-d1a556c8a014")
-        interstitialAd!!.setAdListener(object : InterstitialAdListener {
-            override fun onInterstitialDisplayed(ad: Ad?) {}
-            override fun onInterstitialDismissed(ad: Ad?) {
-//                finish()
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-            }
-            override fun onError(ad: Ad?, adError: AdError?) {
-                // Interstitial ad is loaded and ready to be displayed
-//                Log.e(TAG, "Interstitial ad is error to display")
-//                // Show the ad
+//        interstitialAd!!.setAdListener(object : InterstitialAdListener {
+//            override fun onInterstitialDisplayed(ad: Ad?) {}
+//            override fun onInterstitialDismissed(ad: Ad?) {
+////                finish()
+//                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+//            }
+//            override fun onError(ad: Ad?, adError: AdError?) {
+//                // Interstitial ad is loaded and ready to be displayed
+////                Log.e(TAG, "Interstitial ad is error to display")
+////                // Show the ad
+////                if(!adRespons)
+////                    return
+////
+////                handler.removeCallbacks(runable)
+////                handler.post(runable)
+//                Log.i("Ads", "onAdError ${adError?.errorMessage}")
+//            }
+//            override fun onAdLoaded(ad: Ad?) {
+//                // Interstitial ad is loaded and ready to be displayed
+////                Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!")
+////                // Show the ad
 //                if(!adRespons)
 //                    return
 //
 //                handler.removeCallbacks(runable)
 //                handler.post(runable)
-                Log.i("Ads", "onAdError ${adError?.errorMessage}")
-            }
-            override fun onAdLoaded(ad: Ad?) {
-                // Interstitial ad is loaded and ready to be displayed
-//                Log.d(TAG, "Interstitial ad is loaded and ready to be displayed!")
-//                // Show the ad
-                if(!adRespons)
+////                interstitialAd!!.show()
+//                Log.i("Ads", "onAdsLoad")
+//            }
+//
+//            override fun onAdClicked(ad: Ad?) {
+//                // Ad clicked callback
+//                Log.d(TAG, "Interstitial ad clicked!")
+//            }
+//
+//            override fun onLoggingImpression(ad: Ad?) {
+//                // Ad impression logged callback
+//                Log.d(TAG, "Interstitial ad impression logged!")
+//            }
+//        })
+//        interstitialAd!!.loadAd()
+//
+//        runable = Runnable {
+//            adRespons = false
+//            if (interstitialAd!!.isAdLoaded){
+//                Log.i("Ads", "Adds Show")
+////                opened this comment if you want show this ads
+//                interstitialAd!!.show()
+//            }else{
+//                Log.d("Ads", "Ads not show")
+//                val i = Intent(this@SplashActivity, MainActivity::class.java)
+//                startActivity(i)
+//            }
+//        }
+
+        if(!adRespons)
                     return
 
                 handler.removeCallbacks(runable)
                 handler.post(runable)
 //                interstitialAd!!.show()
                 Log.i("Ads", "onAdsLoad")
-            }
 
-            override fun onAdClicked(ad: Ad?) {
-                // Ad clicked callback
-                Log.d(TAG, "Interstitial ad clicked!")
-            }
-
-            override fun onLoggingImpression(ad: Ad?) {
-                // Ad impression logged callback
-                Log.d(TAG, "Interstitial ad impression logged!")
-            }
-        })
         interstitialAd!!.loadAd()
 
         runable = Runnable {
             adRespons = false
-            if (interstitialAd!!.isAdLoaded){
+            if (interstitialAd!!.isAdLoaded) {
                 Log.i("Ads", "Adds Show")
 //                opened this comment if you want show this ads
                 interstitialAd!!.show()
-            }else{
+            } else {
                 Log.d("Ads", "Ads not show")
                 val i = Intent(this@SplashActivity, MainActivity::class.java)
                 startActivity(i)
             }
         }
-
         startDelay(2000)
 
     }
