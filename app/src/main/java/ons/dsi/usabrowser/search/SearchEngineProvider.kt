@@ -50,7 +50,7 @@ class SearchEngineProvider @Inject constructor(
             9 -> BaiduSearch()
             10 -> YandexSearch()
             11 -> NaverSearch()
-            else -> DuckLiteSearch()
+            else -> DuckSearch()
         }
 
     /**

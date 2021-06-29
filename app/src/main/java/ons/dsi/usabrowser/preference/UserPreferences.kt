@@ -12,6 +12,7 @@ import ons.dsi.usabrowser.search.engine.GoogleSearch
 import ons.dsi.usabrowser.utils.FileUtils
 import android.content.SharedPreferences
 import ons.dsi.usabrowser.search.engine.DuckSearch
+import ons.dsi.usabrowser.search.engine.NaverSearch
 import javax.inject.Inject
 import javax.inject.Singleton
 
