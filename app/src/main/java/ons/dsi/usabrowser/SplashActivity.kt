@@ -112,7 +112,7 @@ class SplashActivity : AppCompatActivity() {
 
                             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                                 val intent = Intent(Intent.ACTION_VIEW)
-                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.usaturbo")
+                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.usabrowser")
                                 startActivity(intent)
                             }
 
@@ -216,8 +216,8 @@ class SplashActivity : AppCompatActivity() {
         if(!adRespons)
             return
 
-        handler.removeCallbacks(runable)
-        handler.post(runable)
+        handler.removeCallbacks(runable!!)
+        handler.post(runable!!)
 //                interstitialAd!!.show()
         Log.i("Ads", "onAdsLoad")
         interstitialAd!!.loadAd()
@@ -254,8 +254,8 @@ class SplashActivity : AppCompatActivity() {
     }
 
     fun startDelay(time: Long){
-        handler.removeCallbacks(runable)
-        handler.postDelayed(runable, time)
+        handler.removeCallbacks(runable!!)
+        handler.postDelayed(runable!!, time)
     }
 
     override fun onPause() {
