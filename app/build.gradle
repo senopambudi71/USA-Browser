@@ -57,14 +57,14 @@ android {
         lightningPlus {
             dimension "capabilities"
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
-            applicationId "ons.dsi.usaturbo"
+            applicationId "ons.dsi.xturbopro"
             versionCode project.versionCode_plus
         }
 
         lightningLite {
             dimension "capabilities"
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"false\")"
-            applicationId "ons.dsi.usaturbo"
+            applicationId "ons.dsi.xturbopro"
             versionCode project.versionCode_lite
         }
     }
