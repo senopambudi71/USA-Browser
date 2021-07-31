@@ -112,7 +112,7 @@ class SplashActivity : AppCompatActivity() {
 
                             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                                 val intent = Intent(Intent.ACTION_VIEW)
-                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.usabrowser")
+                                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=ons.dsi.usaturbo")
                                 startActivity(intent)
                             }
 
