@@ -75,7 +75,7 @@ class SplashActivity : AppCompatActivity() {
 //            }
 //        })
 
-        cekUpdateApp()
+//        cekUpdateApp()
     }
 
     private fun cekUpdateApp() {
