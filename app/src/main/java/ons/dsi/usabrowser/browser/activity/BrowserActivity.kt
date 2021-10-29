@@ -393,7 +393,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         // set display options of the ActionBar
         actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayShowHomeEnabled(false)
+        actionBar.setDisplayShowHomeEnabled(true)
         actionBar.setDisplayShowCustomEnabled(true)
         actionBar.setCustomView(R.layout.toolbar_content)
 
