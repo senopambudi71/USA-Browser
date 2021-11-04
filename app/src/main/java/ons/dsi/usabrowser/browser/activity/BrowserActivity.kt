@@ -112,6 +112,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     private var searchBackground: View? = null
     private var searchView: SearchView? = null
     private var arrowImageView: ImageView? = null
+//    private var homeImageView: ImageView? = null
 
     // Current tab view being displayed
     private var currentTabView: View? = null
