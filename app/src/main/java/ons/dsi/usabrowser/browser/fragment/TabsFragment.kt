@@ -1,6 +1,5 @@
 package ons.dsi.usabrowser.browser.fragment
 
-import ons.dsi.usabrowser.BuildConfig
 import ons.dsi.usabrowser.R
 import ons.dsi.usabrowser.browser.TabsManager
 import ons.dsi.usabrowser.browser.TabsView

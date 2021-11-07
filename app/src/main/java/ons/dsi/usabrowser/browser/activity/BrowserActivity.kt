@@ -426,6 +426,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         mainHandler.post { drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, getBookmarkDrawer()) }
 
         customView.findViewById<FrameLayout>(R.id.arrow_button).setOnClickListener(this)
+        customView.findViewById<FrameLayout>(R.id.home_button).setOnClickListener(this)
+        customView.findViewById<FrameLayout>(R.id.download_button).setOnClickListener(this)
 
         val iconBounds = Utils.dpToPx(24f)
         backgroundColor = ThemeUtils.getPrimaryColor(this)
@@ -2025,6 +2027,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
                 shouldShowTabsInDrawer -> drawer_layout.openDrawer(getTabDrawer())
                 else -> currentTab.loadHomePage()
             }
+            R.id.home_button -> currentTab.loadHomePage()
+            R.id.download_button -> currentTab.loadDownloadsPage()
             R.id.button_next -> findResult?.nextResult()
             R.id.button_back -> findResult?.previousResult()
             R.id.button_quit -> {
