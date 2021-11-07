@@ -1462,8 +1462,8 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             if (isIncognito()) {
                 arrowImageView?.setImageDrawable(ThemeUtils.getThemedDrawable(this, R.drawable.incognito_mode, true))
             } else {
-                arrowImageView?.setImageBitmap(DrawableUtils.getRoundedNumberImage(number, Utils.dpToPx(24f),
-                    Utils.dpToPx(24f), ThemeUtils.getIconThemeColor(this, isDarkTheme), Utils.dpToPx(2.5f)))
+                arrowImageView?.setImageBitmap(DrawableUtils.getRoundedNumberImage(number, Utils.dpToPx(19f),
+                    Utils.dpToPx(19f), ThemeUtils.getIconThemeColor(this, isDarkTheme), Utils.dpToPx(1.5f)))
             }
         }
     }

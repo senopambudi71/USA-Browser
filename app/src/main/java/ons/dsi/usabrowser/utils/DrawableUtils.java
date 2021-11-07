@@ -81,7 +81,7 @@ public final class DrawableUtils {
         paint.setTextAlign(Paint.Align.CENTER);
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
 
-        int radius = Utils.dpToPx(2);
+        int radius = Utils.dpToPx(8);
 
         final RectF outer = new RectF(0, 0, canvas.getWidth(), canvas.getHeight());
         canvas.drawRoundRect(outer, radius, radius, paint);
