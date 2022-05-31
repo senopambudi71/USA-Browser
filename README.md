@@ -10,7 +10,7 @@ alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/det
 #### Features
 * Bookmarks
 
-* History
+* Historyzz
 
 * Multiple search engines (Google, Bing, Yahoo, StartPage, DuckDuckGo, etc.)
 
