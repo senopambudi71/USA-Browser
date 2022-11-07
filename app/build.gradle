@@ -57,14 +57,14 @@ android {
         lightningPlus {
             dimension "capabilities"
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"true\")"
-            applicationId "com.jericoproject.blackturbo"
+            applicationId "com.jericoico.blackturbo"
             versionCode project.versionCode_plus
         }
 
         lightningLite {
             dimension "capabilities"
             buildConfigField "boolean", "FULL_VERSION", "Boolean.parseBoolean(\"false\")"
-            applicationId "com.jericoproject.blackturbo"
+            applicationId "com.jericoico.blackturbo"
             versionCode project.versionCode_lite
         }
     }
