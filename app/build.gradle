@@ -1,3 +1,5 @@
+import com.getkeepsafe.dexcount.OutputFormat
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -8,7 +10,6 @@ apply plugin: 'com.github.ben-manes.versions'
 
 android {
     compileSdkVersion project.targetSdkVersion
-    buildToolsVersion project.buildToolsVersion
 
     defaultConfig {
         minSdkVersion project.minSdkVersion
@@ -68,18 +69,21 @@ android {
             versionCode project.versionCode_lite
         }
     }
-
-    lintOptions {
-        abortOnError true
-    }
-
     packagingOptions {
-        exclude '.readme'
+        resources {
+            excludes += ['.readme']
+        }
     }
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    lint {
+        abortOnError true
+    }
+    namespace 'ons.dsi.usabrowser'
 }
 
 jacoco {
@@ -89,7 +93,7 @@ jacoco {
 dexcount {
     includeClasses = false
     includeFieldCount = false
-    format = "tree"
+    format = OutputFormat.TREE
     orderByMethodCount = true
     verbose = false
 }
@@ -166,7 +170,7 @@ dependencies {
     implementation 'com.startapp:inapp-sdk:4.6.+'
 
     //faceBookAds
-    implementation 'com.facebook.android:audience-network-sdk:6.+'
+    implementation 'com.facebook.android:audience-network-sdk:6.12.0'
     implementation 'com.victor:lib:1.0.4'
 
     //volley
