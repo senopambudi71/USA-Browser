@@ -40,16 +40,13 @@ class SplashActivity : AppCompatActivity() {
     private var interstitialAd: InterstitialAd? = null
     private lateinit var isdialog:AlertDialog
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_splash)
         AudienceNetworkAds.initialize(this)
 
-        facebookAdsShow()
         showSplash()
-      //  showLoading()
     }
 
     private fun showLoading() {
@@ -66,30 +63,61 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun showSplash(){
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val lastopen = prefs.getInt("lastopen", 0)
+        val editor = prefs.edit()
+        editor.putInt("lastopen", Date().day)
+        editor.apply()
+
+        Log.i("lastOpen : ", lastopen.toString())
+        Log.i("Day : ", Date().day.toString())
+
         runable = Runnable {
-            showLoading()
-//                val i = Intent(this@SplashActivity, MainActivity::class.java)
-//                startActivity(i)
+
+            if (lastopen == Date().day){
+                val loading = LoadingDialog(this)
+                loading.startLoading()
+                val handler = Handler()
+                handler.postDelayed(object :Runnable{
+                    override fun run() {
+                        val i = Intent(this@SplashActivity, MainActivity::class.java)
+                        startActivity(i)
+                    }
+
+                },500)
+            }else{
+                facebookAdsShow()
+            }
+
         }
         startDelay(1000)
     }
 
 
     private fun facebookAdsShow() {
+        showLoading()
         //testing
-        AdSettings.addTestDevice("728f5511-4bc7-42c1-949d-716277710700");
+//        AdSettings.addTestDevice("728f5511-4bc7-42c1-949d-716277710700");
 
         //Config
         interstitialAd = InterstitialAd(this, "842365426987834_843727863518257")
         val config = interstitialAd!!.buildLoadAdConfig().withAdListener(object : InterstitialAdListener{
             override fun onError(p0: Ad?, error: AdError?) {
                 Log.e("Ads error :", error.toString())
+
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
             }
 
             override fun onAdLoaded(ad: Ad?) {
                 Log.i("Ads Load: ", ad.toString())
                 runable = Runnable {
-                    interstitialAd!!.show()
+                    if (interstitialAd== null){
+                        val i = Intent(this@SplashActivity, MainActivity::class.java)
+                        startActivity(i)
+                    }else{
+                        interstitialAd!!.show()
+                    }
                 }
                 startDelay(1000)
             }
@@ -108,28 +136,15 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onInterstitialDismissed(ad: Ad?) {
                 Log.i("Inters Dismissed : ", ad.toString())
-                showSplash()
+                val i = Intent(this@SplashActivity, MainActivity::class.java)
+                startActivity(i)
             }
 
         }).build()
         interstitialAd!!.loadAd(config)
 
-
     }
 
-    fun isNetworkAvailable(context: Context): Boolean {
-        val connectivity = context
-                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        if (null != connectivity) {
-            val info = connectivity.activeNetworkInfo
-            if (null != info && info.isConnected) {
-                if (info.state == NetworkInfo.State.CONNECTED) {
-                    return true
-                }
-            }
-        }
-        return false
-    }
 
     fun startDelay(time: Long){
         handler.removeCallbacks(runable!!)
