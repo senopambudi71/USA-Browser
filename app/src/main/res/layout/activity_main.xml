@@ -45,7 +45,7 @@
 
                 </LinearLayout>
                 <LinearLayout
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:id="@+id/banner_container"
                     android:background="@drawable/ads_bg"
                     android:paddingTop="4dp"
