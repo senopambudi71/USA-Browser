@@ -61,6 +61,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.text.style.CharacterStyle
 import android.text.style.ParagraphStyle
+import android.util.Log
 import android.view.*
 import android.view.View.*
 import android.view.ViewGroup.LayoutParams
@@ -88,8 +89,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.anthonycr.grant.PermissionsManager
-import com.facebook.ads.AdSize
-import com.facebook.ads.AdView
+import com.facebook.ads.*
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.startapp.sdk.ads.banner.Banner
@@ -101,9 +101,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.browser_content.*
 import kotlinx.android.synthetic.main.search_interface.*
 import kotlinx.android.synthetic.main.toolbar.*
+import ons.dsi.usabrowser.MyCache
 import ons.dsi.usabrowser.constant.SCHEME_HOMEPAGE
 import org.json.JSONObject
 import java.io.IOException
+import java.util.*
 import javax.inject.Inject
 
 abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIController, OnClickListener {
@@ -124,6 +126,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     //facebook Ads
     private lateinit var adView: AdView
+
 
     //google adsense
     private lateinit var mAdView: com.google.android.gms.ads.AdView
@@ -243,16 +246,12 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
         }
 
-//        if(userPreferences.homepage == SCHEME_HOMEPAGE){
-//            banner_container.visibility= View.VISIBLE
-//        }else{
-//            banner_container.visibility= View.GONE
-//        }
 
-//        logger.log("ResponsError", userPreferences.homepage.toString())
-//        getIdBanner()
-//        bannerAdsense()
-        showFBanner()
+        val adContainer = findViewById(R.id.banner_container) as LinearLayout
+        val idBanner = getString(R.string.id_banner)
+        val idBannerTest = getString(R.string.id_banner_test)
+
+        showBannerFb(adContainer,idBannerTest, AdSize.BANNER_HEIGHT_50)
 
         presenter = BrowserPresenter(
             this,
@@ -279,41 +278,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     }
 
-    private fun getIdBanner() {
-        val queue = Volley.newRequestQueue(this)
-        val url: String = "https://raw.githubusercontent.com/triutami11/triutami11.github.io/main/xturbopro.json"
-
-        val stringReq = StringRequest(Request.Method.GET, url,
-                Response.Listener<String> { response ->
-                    val resp= response.toString()
-                    val jsonObject= JSONObject(resp)
-                    val bannerIdObject = jsonObject.getString("id_banner")
-                    logger.log("ads id", bannerIdObject)
-                    showBanner(bannerIdObject)
-                },
-                Response.ErrorListener {
-                    logger.log("ResponsError", "No Data and load ads from local")
-                })
-        queue.add(stringReq)
-    }
-
-    private fun showBannerStartApp() {
-        banner = findViewById(R.id.startAppBanner)
-        banner.loadAd()
-    }
-
-    private fun showBanner(idBanner: String) {
-
-        //for testing
-        adView = AdView(this, "IMG_16_9_APP_INSTALL#$idBanner", AdSize.BANNER_HEIGHT_50)
-
-        //for playstore
-        adView = AdView(this, idBanner, AdSize.BANNER_HEIGHT_50)
-        val adContainer = findViewById(R.id.banner_container) as LinearLayout
-        adContainer.addView(adView)
-        adView.loadAd()
-    }
-
     private fun showFBanner() {
 
         //for testing
@@ -324,6 +288,43 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val adContainer = findViewById(R.id.banner_container) as LinearLayout
         adContainer.addView(adView)
         adView.loadAd()
+    }
+
+    fun showBannerFb(layout: LinearLayout,adId:String, size: AdSize = AdSize.BANNER_HEIGHT_50){
+        val cache = MyCache(this)
+        val dateClick = Date(cache.getValue("AD"))
+        val calen = Calendar.getInstance()
+        calen.set(Calendar.SECOND, 20)
+        Log.i("banner time : ", calen.time.time.toString())
+        if (calen.time.time < dateClick.time){
+            Log.i("banner Ads : ", "Ads Cancel")
+            return
+        }
+
+        val adViewFb = AdView(this, adId, size)
+        layout.addView(adViewFb)
+        val config = adViewFb.buildLoadAdConfig().withAdListener(object :AdListener{
+            override fun onError(p0: Ad?, p1: AdError?) {
+                Log.e("Banner Error: ", p1.toString())
+            }
+
+            override fun onAdLoaded(p0: Ad?) {
+                Log.i("Banner Loaded: ", p0.toString())
+            }
+
+            override fun onAdClicked(p0: Ad?) {
+                cache.setValue("AD", Date().time)
+                Log.i("Banner clicked: ", dateClick.time.toString())
+                layout.visibility = View.GONE
+
+            }
+
+            override fun onLoggingImpression(p0: Ad?) {
+                Log.i("Banner Logging: ", p0.toString())
+            }
+
+        }).build()
+        adViewFb.loadAd(config)
     }
 
     private fun initialize(savedInstanceState: Bundle?) {

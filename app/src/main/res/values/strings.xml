@@ -11,6 +11,7 @@
     <string name="action_copy">Copy link</string>
     <string name="action_forward">Forward</string>
     <string name="id_banner">842365426987834_843727670184943</string>
+    <string name="id_banner_test">"IMG_16_9_APP_INSTALL#842365426987834_843727670184943"</string>
     <string name="id_interstitial">842365426987834_843727863518257</string>
     <string name="id_banner_adsense">ca-app-pub-1766769958657969/6787962872</string>
     <string name="id_interstitial_adsense">ca-app-pub-1766769958657969/1344064503</string>
