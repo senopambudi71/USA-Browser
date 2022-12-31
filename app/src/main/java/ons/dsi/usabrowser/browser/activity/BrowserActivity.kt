@@ -91,6 +91,7 @@ import com.android.volley.toolbox.Volley
 import com.anthonycr.grant.PermissionsManager
 import com.facebook.ads.*
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.startapp.sdk.ads.banner.Banner
 import io.reactivex.Completable
@@ -246,12 +247,13 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             }
         }
 
-
         val adContainer = findViewById(R.id.banner_container) as LinearLayout
+
         val idBanner = getString(R.string.id_banner)
         val idBannerTest = getString(R.string.id_banner_test)
+        val idBannerAdmod = getString(R.string.id_banner_adsense)
 
-        showBannerFb(adContainer,idBannerTest, AdSize.BANNER_HEIGHT_50)
+        showBannerFb(adContainer,idBanner, AdSize.BANNER_HEIGHT_50)
 
         presenter = BrowserPresenter(
             this,
@@ -264,8 +266,6 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             RecentTabModel(),
             logger
         )
-       // startAppAd = StartAppAd(this)
-
 
         initialize(savedInstanceState)
     }
@@ -278,16 +278,35 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     }
 
-    private fun showFBanner() {
+    private fun showBannerAdmob(){
+        mAdView = findViewById(R.id.adView)
+        mAdView.adListener = object: com.google.android.gms.ads.AdListener(){
+            override fun onAdClicked() {
+                Log.i("AdmodAds", "ads google clicked")
+                mAdView.visibility = View.VISIBLE
+            }
 
-        //for testing
-        adView = AdView(this, "IMG_16_9_APP_INSTALL#842365426987834_843727670184943", AdSize.BANNER_HEIGHT_50)
+            override fun onAdClosed() {
+                Log.i("AdmodAds", "ads google Closed")
+            }
 
-        //for playstore
-//        adView = AdView(this, "842365426987834_843727670184943" , AdSize.BANNER_HEIGHT_50)
-        val adContainer = findViewById(R.id.banner_container) as LinearLayout
-        adContainer.addView(adView)
-        adView.loadAd()
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.e("AdmodAds", "ads google clicked$adError")
+                mAdView.visibility = View.GONE
+            }
+
+            override fun onAdImpression() {
+
+            }
+
+            override fun onAdLoaded() {
+
+            }
+
+            override fun onAdOpened() {
+
+            }
+        }
     }
 
     fun showBannerFb(layout: LinearLayout,adId:String, size: AdSize = AdSize.BANNER_HEIGHT_50){
@@ -296,16 +315,17 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val calen = Calendar.getInstance()
         calen.set(Calendar.SECOND, 20)
         Log.i("banner time : ", calen.time.time.toString())
-        if (calen.time.time < dateClick.time){
-            Log.i("banner Ads : ", "Ads Cancel")
-            return
-        }
+//        if (calen.time.time < dateClick.time){
+//            Log.i("banner Ads : ", "Ads Cancel")
+//            return
+//        }
 
         val adViewFb = AdView(this, adId, size)
         layout.addView(adViewFb)
         val config = adViewFb.buildLoadAdConfig().withAdListener(object :AdListener{
             override fun onError(p0: Ad?, p1: AdError?) {
                 Log.e("Banner Error: ", p1.toString())
+                layout.visibility = View.GONE
             }
 
             override fun onAdLoaded(p0: Ad?) {
@@ -315,8 +335,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             override fun onAdClicked(p0: Ad?) {
                 cache.setValue("AD", Date().time)
                 Log.i("Banner clicked: ", dateClick.time.toString())
-                layout.visibility = View.GONE
-
+                layout.visibility = View.VISIBLE
             }
 
             override fun onLoggingImpression(p0: Ad?) {
