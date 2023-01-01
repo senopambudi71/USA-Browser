@@ -59,22 +59,16 @@
             android:configChanges="keyboardHidden|orientation|screenSize" />
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-<!--        for app id adsense xbrowser-->
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-1766769958657969~8292616231" />
+            android:value="ca-app-pub-8841147692950157~1467188432" />
         <meta-data
             android:name="android.webkit.WebView.MetricsOptOut"
             android:value="true" />
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
-<!--        <meta-data-->
-<!--            android:name="com.startapp.sdk.APPLICATION_ID"-->
-<!--            android:value="208835501" />-->
-<!--        <meta-data-->
-<!--            android:name="com.startapp.sdk.RETURN_ADS_ENABLED"-->
-<!--            android:value="false" />-->
 
         <activity
             android:name="ons.dsi.usabrowser.MainActivity"
