@@ -26,11 +26,10 @@
                 <include layout="@layout/search_interface"/>
 
                 <LinearLayout
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:background="@color/browser_actions_bg_grey"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:padding="5dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center">
                     <com.google.android.gms.ads.AdView
                         xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -40,12 +39,13 @@
                         android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
                         ads:adSize="BANNER"
-                        ads:adUnitId="@string/id_banner_adsense_test">
+                        android:padding="5dp"
+                        ads:adUnitId="@string/id_banner_admob">
                     </com.google.android.gms.ads.AdView>
 
                 </LinearLayout>
                 <LinearLayout
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:id="@+id/banner_container"
                     android:background="@drawable/ads_bg"
                     android:paddingTop="4dp"

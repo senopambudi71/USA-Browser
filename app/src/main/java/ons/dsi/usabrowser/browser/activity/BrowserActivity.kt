@@ -251,11 +251,10 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
         val idBanner = getString(R.string.id_banner)
         val idBannerTest = getString(R.string.id_banner_test)
-        val idBannerAdmod = getString(R.string.id_banner_adsense)
 
 //        showBannerFb(adContainer,idBanner, AdSize.BANNER_HEIGHT_50)
-
         showBannerAdmob()
+//        bannerAdmob()
 
         presenter = BrowserPresenter(
             this,
@@ -272,7 +271,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         initialize(savedInstanceState)
     }
 
-    private fun bannerAdsense(){
+    private fun bannerAdmob(){
         //        google adsense
         mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
@@ -282,33 +281,38 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
 
     private fun showBannerAdmob(){
         mAdView = findViewById(R.id.adView)
+
         mAdView.adListener = object: com.google.android.gms.ads.AdListener(){
             override fun onAdClicked() {
-                Log.i("AdmodAds", "ads google clicked")
-                mAdView.visibility = View.VISIBLE
+                Log.i("BannerAdmobAds", "ads google clicked")
             }
 
             override fun onAdClosed() {
-                Log.i("AdmodAds", "ads google Closed")
+                Log.i("BannerAdmobAds", "ads google Closed")
+                mAdView.visibility = View.GONE
             }
 
             override fun onAdFailedToLoad(adError: LoadAdError) {
-                Log.e("AdmodAds", "ads google clicked$adError")
+                Log.e("BannerAdmobAds", "ads google error is $adError")
                 mAdView.visibility = View.GONE
             }
 
             override fun onAdImpression() {
-
+                Log.i("AdmobAds", "ads google on adImpression")
             }
 
             override fun onAdLoaded() {
-
+                Log.i("BannerAdmobAds", "ads google on AdLoaded")
+                mAdView.visibility = View.VISIBLE
             }
 
             override fun onAdOpened() {
-
+                Log.i("BannerAdmobAds", "ads google on Adopened")
+                mAdView.visibility = View.VISIBLE
             }
         }
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
     }
 
     fun showBannerFb(layout: LinearLayout,adId:String, size: AdSize = AdSize.BANNER_HEIGHT_50){
@@ -337,7 +341,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
             override fun onAdClicked(p0: Ad?) {
                 cache.setValue("AD", Date().time)
                 Log.i("Banner clicked: ", dateClick.time.toString())
-                layout.visibility = View.VISIBLE
+                layout.visibility = View.GONE
             }
 
             override fun onLoggingImpression(p0: Ad?) {
@@ -1319,6 +1323,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         } else {
             if (currentTab != null) {
                 logger.log(TAG, "onBackPressed")
+                showBannerAdmob()
                 if (searchView?.hasFocus() == true) {
                     currentTab.requestFocus()
                 } else if (currentTab.canGoBack()) {
@@ -1373,6 +1378,7 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
     }
 
     override fun onStart() {
+        logger.log(TAG, "onStart")
         super.onStart()
         proxyUtils.onStart(this)
     }

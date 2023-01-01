@@ -15,9 +15,10 @@
     <string name="id_banner">842365426987834_843727670184943</string>
     <string name="id_interstitial">842365426987834_843727863518257</string>
     <!--Google Admob-->
-    <string name="id_banner_adsense_test">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="id_banner_adsense">ca-app-pub-8841147692950157/5316849827</string>
-    <string name="id_interstitial_adsense">ca-app-pub-8841147692950157/7021400466</string>
+    <string name="id_interstitial_admob_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="id_banner_admob_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="id_banner_admob">ca-app-pub-8841147692950157/5316849827</string>
+    <string name="id_interstitial_admob">ca-app-pub-8841147692950157/7021400466</string>
 
     <string name="settings">Settings</string>
     <string name="location">Location access</string>
