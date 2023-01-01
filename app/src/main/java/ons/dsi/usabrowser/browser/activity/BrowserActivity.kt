@@ -253,7 +253,9 @@ abstract class BrowserActivity : ThemableBrowserActivity(), BrowserView, UIContr
         val idBannerTest = getString(R.string.id_banner_test)
         val idBannerAdmod = getString(R.string.id_banner_adsense)
 
-        showBannerFb(adContainer,idBanner, AdSize.BANNER_HEIGHT_50)
+//        showBannerFb(adContainer,idBanner, AdSize.BANNER_HEIGHT_50)
+
+        showBannerAdmob()
 
         presenter = BrowserPresenter(
             this,
